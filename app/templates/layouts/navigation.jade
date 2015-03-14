@@ -1,0 +1,18 @@
+.user
+  .nickname.text-box #{username}
+  div(class='topcoat-button logout') Logout
+
+div(class='topcoat-list__container navigation-list-container')
+  ul(class='topcoat-list')
+    li(class='topcoat-list__item navigation-list-item')
+      a(href=routes.rootPath() class='navigation-button js-link')
+        .link-box
+          span Link 1
+        .fa-box
+          i(class='fa fa-angle-right')
+    li(class='topcoat-list__item navigation-list-item')
+      a(href=routes.somelink() class='navigation-button js-link')
+        .link-box
+          span Link 2
+        .fa-box
+          i(class='fa fa-angle-right')

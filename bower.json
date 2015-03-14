@@ -1,0 +1,23 @@
+{
+  "name": "webkit-base",
+  "authors": [
+    "Marat Fakhreev <marat.fakhreev@gmail.com>"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "marionette": "~2.3.1",
+    "backbone-route-filter": "~0.1.1",
+    "backbone.stickit": "~0.8.0",
+    "backbone-validation": "~0.9.1",
+    "moment": "~2.8.4",
+    "moment-timezone": "~0.2.5",
+    "fastclick": "~1.0.3",
+    "fontawesome": "~4.2.0",
+    "backbone-nested-model": "~2.0.1",
+    "velocity": "~1.2.1",
+    "nprogress": "~0.1.6",
+    "hammerjs": "~2.0.4",
+    "jquery-hammerjs": "~2.0.0",
+    "topcoat": "~0.8.0"
+  }
+}
