@@ -8,4 +8,4 @@ info.txt
 
 build/*
 !build/config.xml
-app/scripts/config.coffee
+app/scripts/config.js
