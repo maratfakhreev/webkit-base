@@ -1,0 +1,139 @@
+{
+  "name": "webkit-base",
+  "appId": "com.webkitbase",
+  "version": "1.0.0",
+  "authors": [
+    "Marat Fakhreev <marat.fakhreev@gmail.com>"
+  ],
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.2.0",
+    "babelify": "^5.0.3",
+    "browser-sync": "^2.2.3",
+    "browserify": "^8.0.1",
+    "browserify-shim": "^3.8.2",
+    "connect-prism": "^1.0.1",
+    "cordova-lib": "^4.2.0",
+    "del": "^1.1.1",
+    "grunt": "^0.4.5",
+    "gulp": "~3.8.11",
+    "gulp-concat": "~2.4.1",
+    "gulp-cssimport": "~1.2.3",
+    "gulp-help": "^1.3.3",
+    "gulp-install": "~0.2.0",
+    "gulp-jade": "~0.8.0",
+    "gulp-notify": "~2.0.0",
+    "gulp-plumber": "~0.6.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace-task": "^0.1.0",
+    "gulp-stylus": "~1.3.3",
+    "jadeify": "^4.0.0",
+    "jeet": "^6.1.2",
+    "require-dir": "~0.1.0",
+    "run-sequence": "~1.0.1",
+    "shelljs": "^0.3.0",
+    "vinyl-transform": "^1.0.0",
+    "watchify": "^2.2.1",
+    "yargs": "^2.3.0"
+  },
+  "dependencies": {
+    "cordova-android": "^3.7.1",
+    "cordova-browser": "^3.6.0",
+    "cordova-ios": "^3.7.0"
+  },
+  "cordovaPlugins": [
+    "org.apache.cordova.camera",
+    "org.apache.cordova.device",
+    "org.apache.cordova.dialogs",
+    "org.apache.cordova.geolocation",
+    "org.apache.cordova.network-information",
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.contacts",
+    "org.apache.cordova.device-motion",
+    "org.apache.cordova.vibration",
+    "org.apache.cordova.file",
+    "org.apache.cordova.file-transfer"
+  ],
+  "browser": {
+    "jquery": "./bower_components/jquery/dist/jquery.js",
+    "underscore": "./bower_components/underscore/underscore.js",
+    "backbone": "./bower_components/backbone/backbone.js",
+    "backbone-routefilter": "./bower_components/backbone-route-filter/backbone-route-filter.js",
+    "backbone-stickit": "./bower_components/backbone.stickit/backbone.stickit.js",
+    "backbone-validation": "./bower_components/backbone-validation/dist/backbone-validation.js",
+    "backbone-nested-model": "./bower_components/backbone-nested-model/backbone-nested.js",
+    "marionette": "./bower_components/marionette/lib/backbone.marionette.js",
+    "moment": "./bower_components/moment/moment.js",
+    "moment-timezone": "./bower_components/moment-timezone/builds/moment-timezone-with-data.js",
+    "fastclick": "./bower_components/fastclick/lib/fastclick.js",
+    "spinner": "./bower_components/spinjs/spin.js",
+    "velocity": "./bower_components/velocity/velocity.js",
+    "velocity-ui": "./bower_components/velocity/velocity.ui.js",
+    "nprogress": "./bower_components/nprogress/nprogress.js",
+    "hammerjs": "./bower_components/hammerjs/hammer.js",
+    "jquery-hammerjs": "./bower_components/jquery-hammerjs/jquery.hammer.js"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "underscore": "_",
+    "hammerjs": "Hammer",
+    "jquery-hammerjs": {
+      "exports": "$",
+      "depends": [
+        "jquery",
+        "hammerjs"
+      ]
+    },
+    "backbone": {
+      "exports": "Backbone",
+      "depends": [
+        "jquery",
+        "underscore"
+      ]
+    },
+    "backbone-routefilter": {
+      "exports": "Backbone",
+      "depends": [
+        "backbone"
+      ]
+    },
+    "backbone-stickit": {
+      "exports": "Backbone",
+      "depends": [
+        "backbone"
+      ]
+    },
+    "backbone-nested-model": {
+      "exports": "Backbone",
+      "depends": [
+        "backbone"
+      ]
+    },
+    "backbone-validation": {
+      "exports": "Backbone",
+      "depends": [
+        "backbone"
+      ]
+    },
+    "marionette": {
+      "exports": "Marionette",
+      "depends": [
+        "backbone"
+      ]
+    },
+    "velocity": {
+      "exports": "$",
+      "depends": [
+        "jquery"
+      ]
+    },
+    "velocity-ui": {
+      "exports": "$",
+      "depends": [
+        "velocity"
+      ]
+    },
+    "nprogress": {
+      "exports": "NProgress"
+    }
+  }
+}

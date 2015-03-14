@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if ! which bower; then
+  npm install -g bower
+fi
+
+if ! which gulp; then
+  npm install -g gulp
+fi
+
+if ! which ios-deploy; then
+  npm install -g ios-deploy
+fi
+
+if ! which ios-sim; then
+  npm install -g ios-sim
+fi
+
+npm install
+bower install

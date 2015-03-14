@@ -1,0 +1,62 @@
+.side-navigation-region
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  width: 320px
+  height: 100%
+  background-color: $bgDarkGreyColor
+  box-sizing: border-box
+  padding-top: 4.375rem
+
+  .user
+    center(90%)
+
+  .navigation-list-container
+    padding-top: 3rem
+    border: none
+
+  .topcoat-list
+    background-color: transparent
+    border: none
+
+  .navigation-list-item
+    clearfix()
+    padding: 0
+    border-top: none
+
+    &:first-child
+    &:last-child
+      border-top: none
+
+  .navigation-button
+    display: block
+    width: 100%
+    height: 100%
+    color: inherit
+    clearfix()
+
+    &:active
+      background-color: $bgLightGreyColor
+
+  .link-box
+    col(8/10)
+
+    span
+      display: block
+      padding: 1.25rem
+      box-sizing: border-box
+      text-decoration: none
+
+  .fa-box
+    col(2/10)
+
+    .fa
+      margin: 0 0 0 10px
+      font-size: 28px
+      padding: 1rem
+      color: $blueColor
+
+@media screen and (max-width: 640px)
+  .side-navigation-region
+    width: 260px
