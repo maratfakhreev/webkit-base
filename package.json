@@ -5,6 +5,7 @@
   "authors": [
     "Marat Fakhreev <marat.fakhreev@gmail.com>"
   ],
+  "main": "index.html",
   "devDependencies": {
     "autoprefixer-stylus": "^0.2.0",
     "babelify": "^5.0.3",
@@ -31,6 +32,7 @@
     "jadeify": "^4.0.0",
     "jeet": "^6.1.2",
     "jshint-stylish": "^1.0.1",
+    "node-webkit-builder": "^1.0.11",
     "require-dir": "~0.1.0",
     "run-sequence": "~1.0.1",
     "shelljs": "^0.3.0",
@@ -138,5 +140,15 @@
     "nprogress": {
       "exports": "NProgress"
     }
+  },
+  "window": {
+    "title": "Webkit Base",
+    "frame": false,
+    "min-width": 800,
+    "min-height": 500,
+    "width": 800,
+    "height": 700,
+    "max-width": 1000,
+    "max-height": 1200
   }
 }

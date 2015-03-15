@@ -11,7 +11,9 @@ gulp.task('production', function() {
       'copy',
       'templates',
       'stylesheets',
-      'replace'
+      'replace',
+      'jshint',
+      'jsonlint'
     ],
     'browserify'
   );
