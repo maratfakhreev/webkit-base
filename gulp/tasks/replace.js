@@ -13,18 +13,14 @@ gulp.task('replace', function() {
   };
 
   settings = JSON.parse(fs.readFileSync(config.appDir + "/config/environments/" + env + ".json", 'utf8'));
+  settings['env'] = env;
 
-  for (s in settings) {
+  for (var settingName in settings) {
     patterns.push({
-      match: s,
-      replacement: settings[s]
+      match: settingName,
+      replacement: settings[settingName]
     });
-  }
-
-  patterns.push({
-    match: 'env',
-    replacement: env
-  });
+  };
 
   gulp.src(config.appDir + "/config/config.js")
     .pipe(replace({patterns: patterns}))
