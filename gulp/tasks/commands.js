@@ -6,6 +6,10 @@ gulp.task('ios-emulators', 'List of available iOS emulators', function() {
   shelljs.exec('build/platforms/ios/cordova/lib/list-emulator-images');
 });
 
+gulp.task('webinspector', 'Run Safari webinspector for debuging iOS application', function() {
+  shelljs.exec('osascript bin/apple_scripts/webinspector_ios.applescript');
+});
+
 gulp.task('set-app', 'Upload client application', ['clean-app'], function() {
   var dir = (process.cwd()) + "/app";
 
