@@ -4,7 +4,7 @@ export default class Spinner {
   static init() {
     NProgress.configure({
       showSpinner: false,
-      parent: '.screen-inner'
+      parent: '.horizontal-spinner'
     });
     this.$spin = $('#spinner');
     this.spinHide();
@@ -19,10 +19,10 @@ export default class Spinner {
   }
 
   static hide() {
-    if ($('.screen-inner').length !== 0) NProgress.done();
+    if ($('.horizontal-spinner').length !== 0) NProgress.done();
   }
 
   static show() {
-    if ($('.screen-inner').length !== 0) NProgress.start();
+    if ($('.horizontal-spinner').length !== 0) NProgress.start();
   }
 }
