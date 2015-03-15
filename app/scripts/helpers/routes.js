@@ -1,3 +1,8 @@
 export default class RoutesHelper {
-  static rootPath() {return ''}
+  static get rootPath() {return ''}
+  static get route() {return 'route'}
+
+  static refresh() {
+    Backbone.history.loadUrl();
+  }
 }

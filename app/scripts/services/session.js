@@ -1,20 +1,17 @@
 import AppConfig from 'scripts/config';
 import User from 'scripts/models/user';
 import Storage from 'scripts/services/storage';
-import Vent from 'scripts/services/event_aggregator';
 
-var Session = (function() {
-  var SESSION_KEY = AppConfig.sessionKey;
-  var currentUser = null;
+const SESSION_KEY = AppConfig.sessionKey;
+const STORAGE_KEY = AppConfig.storageKey;
+var currentUser = null;
 
-  function Session() {};
-  _.extend(Session, Backbone.Events);
+class Session {
+  static currentUser() {
+    return currentUser || (currentUser = new User(Storage.get(STORAGE_KEY)));
+  }
 
-  Session.currentUser = function() {
-    return currentUser || (currentUser = new User({token: Storage.get(SESSION_KEY)}));
-  };
-
-  Session.create = function() {
+  static create() {
     var deferred = $.Deferred();
 
     if (!this.isLoggedIn()) {
@@ -34,31 +31,27 @@ var Session = (function() {
     };
 
     return deferred.promise();
-  };
+  }
 
-  Session.destroy = function() {
-    Storage.remove(SESSION_KEY);
-    this.currentUser().clear();
-    this.trigger('session:destroy');
-  };
+  static destroy() {
+    Storage.remove(STORAGE_KEY);
+    Session.currentUser().clear();
+    Session.trigger('session:destroy');
+  }
 
-  Session.save = function() {
-    Storage.set(SESSION_KEY, this.currentUser().get(SESSION_KEY));
-  };
+  static save() {
+    Storage.set(STORAGE_KEY, this.currentUser().toJSON());
+  }
 
-  Session.isLoggedIn = function() {
+  static isLoggedIn() {
     return this.currentUser().has(SESSION_KEY);
   };
 
-  Session.getToken = function() {
+  static getToken() {
     return this.currentUser().get(SESSION_KEY);
-  };
+  }
+}
 
-  Session.getUserId = function() {
-    return this.currentUser().get(user_id);
-  };
-
-  return Session;
-})();
+_.extend(Session, Backbone.Events);
 
 export default Session;

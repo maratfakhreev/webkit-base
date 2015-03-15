@@ -5,6 +5,7 @@ var config = require('../config');
 
 gulp.task('replace', function() {
   var settings = {};
+  var patterns = [];
   var env = config.env;
 
   if (!fs.existsSync(config.appDir + "/config/environments/" + env + ".json")) {
@@ -12,22 +13,20 @@ gulp.task('replace', function() {
   };
 
   settings = JSON.parse(fs.readFileSync(config.appDir + "/config/environments/" + env + ".json", 'utf8'));
+
+  for (s in settings) {
+    patterns.push({
+      match: s,
+      replacement: settings[s]
+    });
+  }
+
+  patterns.push({
+    match: 'env',
+    replacement: env
+  });
+
   gulp.src(config.appDir + "/config/config.js")
-    .pipe(replace({
-      patterns: [
-        {
-          match: 'env',
-          replacement: env
-        },
-        {
-          match: 'apiPath',
-          replacement: settings.apiPath
-        },
-        {
-          match: 'sessionKey',
-          replacement: settings.sessionKey
-        }
-      ]
-    }))
+    .pipe(replace({patterns: patterns}))
     .pipe(gulp.dest(config.appDir + "/scripts"));
 });
