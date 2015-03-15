@@ -1,4 +1,4 @@
-var Config = (function() {
+module.exports = (function() {
   function Config() {};
 
   Config.appDir = 'app';
@@ -6,7 +6,7 @@ var Config = (function() {
   Config.buildDir = 'build';
   Config.env = 'development';
   Config.platform = 'ios';
-  Config.needPreparing = false;
+  Config.preparing = true;
   Config.ports = {
     server: 8000,
     mocks: 8001,
@@ -23,5 +23,3 @@ var Config = (function() {
 
   return Config;
 })();
-
-module.exports = Config;
