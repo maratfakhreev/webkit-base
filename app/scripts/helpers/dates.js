@@ -15,11 +15,11 @@ export default class DatesHelper {
   }
 
   static convertToFormattedDate(date) {
-    Moment(date).format('MM/DD/YYYY')
+    Moment(date).format('MM/DD/YYYY');
   }
 
   static currentTime() {
-    Moment.tz(NY_TIMEZONE).format('YYYY-MM-DDTHH:mm:ssZ')
+    Moment.tz(NY_TIMEZONE).format('YYYY-MM-DDTHH:mm:ssZ');
   }
 
   static calcDateWithOffset(offsetTime) {

@@ -3,4 +3,4 @@ export default {
   serverErrorMsg: 'Problems on server side',
   fillAllFieldsErrorMsg: 'Please fill all the fields',
   passwordErrorMsg: 'Password confirmation must be the same as password'
-}
+};

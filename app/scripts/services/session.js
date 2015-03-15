@@ -28,7 +28,7 @@ class Session {
           deferred.reject();
         }
       });
-    };
+    }
 
     return deferred.promise();
   }
@@ -45,7 +45,7 @@ class Session {
 
   static isLoggedIn() {
     return this.currentUser().has(SESSION_KEY);
-  };
+  }
 
   static getToken() {
     return this.currentUser().get(SESSION_KEY);

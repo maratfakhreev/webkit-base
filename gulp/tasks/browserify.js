@@ -9,7 +9,7 @@ var watchify = require('watchify');
 var notify = require('gulp-notify');
 var cordovaPrepare = require('../helpers/cdv');
 var config = require('../config');
-var entryPoint = "./" + config.appDir + "/scripts/main.js"
+var entryPoint = "./" + config.appDir + "/scripts/main.js";
 
 gulp.task('browserify', function() {
   var bundler = browserify({

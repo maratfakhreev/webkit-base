@@ -1,4 +1,4 @@
-import Vent from 'scripts/services/event_aggregator'
+import Vent from 'scripts/services/event_aggregator';
 
 export default class Camera {
   constructor() {

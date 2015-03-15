@@ -1,4 +1,4 @@
-const ANIMATION_SPEED = 300
+const ANIMATION_SPEED = 300;
 
 export default class Spinner {
   static init() {

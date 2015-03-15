@@ -11,7 +11,9 @@ gulp.task('development', function() {
       'copy',
       'templates',
       'stylesheets',
-      'replace'
+      'replace',
+      'jshint',
+      'jsonlint'
     ],
     'browserify',
     'server',

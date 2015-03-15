@@ -56,7 +56,7 @@ export default class LoginView extends AbstractFormView {
       Spinner.spinShow();
       Session.create().then(function() {
         Spinner.spinHide();
-      })
+      });
     }
     else {
       Notifications.error(MessagesHelper.fillAllFieldsErrorMsg);
