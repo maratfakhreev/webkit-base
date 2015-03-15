@@ -14,8 +14,9 @@ export default class Geolocation {
   }
 
   mapInit() {
-    if (this.centerPoint === null)
-      this.centerPoint = new google.maps.LatLng(40.766029, -73.97705819)
+    if (this.centerPoint === null) {
+      this.centerPoint = new google.maps.LatLng(40.766029, -73.97705819);
+    }
 
     var mapOptions = {
       zoom: 15,
@@ -45,7 +46,7 @@ export default class Geolocation {
   setUserPosition() {
     this.userPos = {};
     navigator.geolocation.getCurrentPosition((position) => {
-      this.userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+      this.userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     }, () => {
       console.log('Geolocation hasn\'t work on emulator');
       this.userPos = new google.maps.LatLng(40.766039, -73.97705829); //test coords
@@ -58,7 +59,7 @@ export default class Geolocation {
     markers.push(this.userPos);
     markers.push(this.carPos);
 
-    for (marker of markers) {
+    for (let marker of markers) {
       marker.setMap(this.map);
     }
   }

@@ -16,7 +16,7 @@ export default class MainRouter extends Marionette.AppRouter {
 
     super(options);
 
-    document.addEventListener('resume', () => {this.onResumeApp()}, false);
+    document.addEventListener('resume', () => {this.onResumeApp();}, false);
     this.listenTo(Session, 'session:create session:destroy', this.onRedirectToRoot);
     this.listenTo(Backbone.history, 'route', this.onNavigationChange);
   }

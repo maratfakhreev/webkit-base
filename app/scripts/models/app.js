@@ -39,13 +39,13 @@ export default class AppModel extends Backbone.NestedModel {
     }).fail(function() {
       Spinner.hide();
       dfd.reject();
-    })
+    });
 
-    return dfd.promise()
+    return dfd.promise();
   }
 
   onErrorHandler(model, error) {
-    if (ERRORS.some(function(element) {element === error.status})) {
+    if (ERRORS.some(function(element) {return element === error.status;})) {
       Notifications.error(_.values(error.responseJSON)[0]);
     }
     else {

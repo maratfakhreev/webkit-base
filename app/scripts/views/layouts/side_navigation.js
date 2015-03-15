@@ -11,11 +11,11 @@ export default class SideNavigationLayout extends Marionette.LayoutView {
 
     this.templateHelpers = {
       routes: RoutesHelper
-    }
+    };
 
     this.events = {
       'click .logout': 'onLogout'
-    }
+    };
 
     super(options);
 

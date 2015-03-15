@@ -2,7 +2,7 @@ const storage = localStorage;
 
 export default class Storage {
   static set(key, data) {
-    var data = JSON.stringify(data);
+    data = JSON.stringify(data);
     storage.setItem(key, data);
   }
 

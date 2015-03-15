@@ -6,7 +6,7 @@ var App = new Marionette.Application();
 App.alreadyInitialized = false;
 
 App.navigate = function(route, options) {
-  options || (options = {});
+  options = options || {};
   return Backbone.history.navigate(route, options);
 };
 

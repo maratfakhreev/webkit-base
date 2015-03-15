@@ -10,12 +10,12 @@ export default class TopNavigationView extends Marionette.ItemView {
     this.ui = {
       menuButton: '.menu-button',
       refreshButton: '.refresh-button'
-    }
+    };
 
     this.events = {
       'click @ui.refreshButton': 'onClickRefreshButton',
       'click @ui.menuButton': 'onClickMenuButton'
-    }
+    };
 
     super(options);
 

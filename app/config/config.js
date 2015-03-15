@@ -3,4 +3,4 @@ export default {
   apiPath: '@@apiPath',
   sessionKey: '@@sessionKey',
   storageKey: '@@storageKey'
-}
+};
