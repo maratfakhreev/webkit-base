@@ -2,11 +2,16 @@ import App from 'scripts/application';
 import Vent from 'scripts/services/event_aggregator';
 import Session from 'scripts/services/session';
 import Spinner from 'scripts/services/spinner';
-import MainLayout from 'scripts/views/layouts/main_layout';
+import MainLayout from 'scripts/views/layouts/main';
+import LandingLayout from 'scripts/views/layouts/landing';
+import SideNavigationLayout from 'scripts/views/layouts/side_navigation';
+import TopBarView from 'scripts/views/bars/top_bar';
+import LoginView from 'scripts/views/login/login_view';
 
 function renderScreen() {
-  // this.layout.navigationRegion.show(new HeaderLayout);
-  // this.layout.sideNavigationRegion.show(new NavigationLayout);
+  this.layout.topBarRegion.show(new TopBarView({title: 'Webkit Base'}));
+  this.layout.sideNavigationRegion.show(new SideNavigationLayout());
+  this.layout.contentRegion.show(new LandingLayout());
 }
 
 export default class MainController extends Marionette.Controller {
@@ -30,9 +35,13 @@ export default class MainController extends Marionette.Controller {
       }
     }
     else {
-      this.layout.navigationRegion.empty();
+      this.layout.topBarRegion.empty();
       this.layout.sideNavigationRegion.empty();
-      // this.layout.contentRegion.show(new LoginView());
+      this.layout.contentRegion.show(new LoginView());
     }
+  }
+
+  route() {
+    // define other route
   }
 }

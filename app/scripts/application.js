@@ -14,7 +14,7 @@ App.on('start', function() {
   if (Connection()) {
     Backbone.history.start();
 
-    $(document).on('click, tap', '.js-link', function(event) {
+    $(document).on('click', '.js-link', function(event) {
       event.preventDefault();
       var href = $(event.currentTarget).attr('href');
       App.navigate(href, {trigger: true});

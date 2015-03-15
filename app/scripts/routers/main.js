@@ -6,7 +6,8 @@ import RoutesHelper from 'scripts/helpers/routes';
 export default class MainRouter extends Marionette.AppRouter {
   constructor(options) {
     this.appRoutes = {
-      '': 'root'
+      '': 'root',
+      'route': 'route'
     };
 
     this.before = {
@@ -25,11 +26,11 @@ export default class MainRouter extends Marionette.AppRouter {
   }
 
   onRedirectToRoot() {
-    if (Backbone.history.fragment === RoutesHelper.rootPath()) {
+    if (Backbone.history.fragment === RoutesHelper.rootPath) {
       Backbone.history.loadUrl(Backbone.history.fragment);
     }
     else {
-      this.navigate(RoutesHelper.rootPath(), {trigger: true});
+      this.navigate(RoutesHelper.rootPath, {trigger: true});
     }
   }
 
@@ -39,6 +40,6 @@ export default class MainRouter extends Marionette.AppRouter {
 
   onResumeApp() {
     App.alreadyInitialized = false;
-    this.navigate(RoutesHelper.rootPath(), {trigger: true});
+    this.navigate(RoutesHelper.rootPath, {trigger: true});
   }
 }

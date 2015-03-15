@@ -2,7 +2,7 @@ import FastClick from 'fastclick';
 import Spinner from 'scripts/services/spinner';
 import Vent from 'scripts/services/event_aggregator';
 import AnimatedRegion from 'scripts/regions/animated';
-import template from 'templates/layouts/main_layout';
+import template from 'templates/layouts/main';
 
 export default class MainLayout extends Marionette.LayoutView {
   constructor(options) {
@@ -10,7 +10,7 @@ export default class MainLayout extends Marionette.LayoutView {
     this.template = template;
 
     this.regions = {
-      navigationRegion: '#navigation_region',
+      topBarRegion: '#top_bar_region',
       sideNavigationRegion: '#side_navigation_region',
       contentRegion: {
         selector: '#content_region',
@@ -27,8 +27,9 @@ export default class MainLayout extends Marionette.LayoutView {
     };
 
     this.events = {
-      'swipeleft': 'onHideMenu'
-    }
+      'swipeleft': 'onHideMenu',
+      'swiperight': 'onShowMenu'
+    };
 
     super(options);
 
@@ -42,10 +43,14 @@ export default class MainLayout extends Marionette.LayoutView {
   }
 
   onHideMenu() {
-    this.$el.removeClass('blurred');
+    this.$el.removeClass('navigation-show');
+  }
+
+  onShowMenu() {
+    this.$el.addClass('navigation-show');
   }
 
   onToggleMenu() {
-    this.$el.toggleClass('blurred');
+    this.$el.toggleClass('navigation-show');
   }
 }
