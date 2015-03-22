@@ -1,5 +1,7 @@
 export default class AbstractFormView extends Marionette.ItemView {
-  constuctor() {
+  constructor(options) {
+    super(options);
+
     this.bindValidation();
   }
 

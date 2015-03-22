@@ -1,6 +1,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var shelljs = require('shelljs');
+var runSequence = require('run-sequence');
 var cordovaLib = require('cordova-lib');
 var argv = require('yargs').argv;
 var pkg = require('../../package.json');
@@ -32,11 +33,20 @@ gulp.task('prepare', 'Prepare application', function() {
 });
 
 gulp.task('build', 'Prepare and compile application', function() {
-  process.chdir(buildDir);
-  cdv.build();
+  if (config.platform === 'desktop') {
+    runSequence(
+      'copy-package-json',
+      'clean-build-desktop',
+      'node-build'
+    );
+  }
+  else {
+    process.chdir(buildDir);
+    cdv.build();
+  }
 });
 
-gulp.task('run', 'Prepare, compile and emulate application', function(cb) {
+gulp.task('run', 'Prepare, compile and emulate application', function() {
   process.chdir(buildDir);
   cdv.run({
     platforms: [config.platform],

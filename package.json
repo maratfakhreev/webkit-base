@@ -150,5 +150,8 @@
     "height": 700,
     "max-width": 1000,
     "max-height": 1200
+  },
+  "webkit": {
+    "plugin": true
   }
 }

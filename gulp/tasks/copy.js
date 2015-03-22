@@ -6,6 +6,7 @@ gulp.task('copy', function() {
   return gulp.src([
     config.appDir + '/images/**/*',
     config.appDir + '/fonts/**/*',
+    config.appDir + '/font/**/*'
   ], {base: config.appDir + '/'})
     .pipe(plumber())
     .pipe(gulp.dest(config.publicDir));

@@ -14,6 +14,6 @@ gulp.task('clean-build', function(cb) {
   del([config.buildDir], cb);
 });
 
-gulp.task('clean-desktop-build', function(cb) {
+gulp.task('clean-build-desktop', function(cb) {
   del([config.buildDir + '/platforms/desktop'], cb);
 });

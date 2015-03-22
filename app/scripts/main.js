@@ -10,6 +10,10 @@ import 'nprogress';
 import 'scripts/modules/main';
 import App from 'scripts/application';
 
-document.addEventListener('deviceready', (function() {
+// document.addEventListener('deviceready', (function() {
+//   App.start();
+// }), false);
+
+$(document).ready(function() {
   App.start();
-}), false);
+});
