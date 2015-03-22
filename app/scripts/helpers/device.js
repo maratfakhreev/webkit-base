@@ -10,8 +10,10 @@ export default class DeviceHelper {
   }
 
   static getVersion() {
-    return cordova.getAppVersion(function(version) {
-      Vent.trigger('app:version:get', version);
-    });
+    if (cordova && this.isMobileDevice()) {
+      return cordova.getAppVersion(function(version) {
+        Vent.trigger('app:version:get', version);
+      });
+    }
   }
 }

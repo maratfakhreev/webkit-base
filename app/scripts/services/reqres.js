@@ -1,17 +1,9 @@
-var ReqRes = (function() {
-  var instance = null;
+var instance = null;
 
-  function ReqRes() {
-    if (instance === null) {
-      instance = new Backbone.Wreqr.RequestResponse();
-    }
-    return instance;
+class ReqRes {
+  static instance() {
+    return instance || (instance = new Backbone.Wreqr.RequestResponse());
   }
+}
 
-  return EventAggregator;
-
-})();
-
-var reqres = new ReqRes();
-
-export default reqres;
+export default ReqRes.instance();

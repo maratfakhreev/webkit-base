@@ -16,8 +16,6 @@
     "backbone-nested-model": "~2.0.1",
     "velocity": "~1.2.1",
     "nprogress": "~0.1.6",
-    "hammerjs": "~2.0.4",
-    "jquery-hammerjs": "~2.0.0",
     "topcoat": "~0.8.0"
   }
 }

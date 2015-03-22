@@ -1,5 +1,6 @@
 import Connection from 'scripts/services/connection_state';
 import Notifications from 'scripts/services/notifications';
+import DeviceHelper from 'scripts/helpers/device';
 
 var App = new Marionette.Application();
 
@@ -13,6 +14,8 @@ App.navigate = function(route, options) {
 App.on('start', function() {
   if (Connection()) {
     Backbone.history.start();
+    $.event.special.swipe.horizontalDistanceThreshold = 130;
+    $.event.special.swipe.verticalDistanceThreshold = 130;
 
     $(document).on('click', '.js-link', function(event) {
       event.preventDefault();
@@ -25,4 +28,17 @@ App.on('start', function() {
   }
 });
 
-export default App;
+App.init = function() {
+  if (DeviceHelper.isMobileDevice()) {
+    document.addEventListener('deviceready', (function() {
+      App.start();
+    }), false);
+  }
+  else {
+    $(document).ready(function() {
+      App.start();
+    });
+  }
+};
+
+export default App

@@ -1,7 +1,9 @@
 import DeviceHelper from 'scripts/helpers/device';
 import Spinner from 'scripts/services/spinner';
 
-function confirm(...params) {
+const DELAY = 300;
+
+var confirm = _.debounce(function(...params) {
   if (DeviceHelper.isMobileDevice()) {
     navigator.notification.confirm(...params);
   }
@@ -9,29 +11,29 @@ function confirm(...params) {
     alert(params[0]);
     params[1]();
   }
-}
+}, DELAY);
+
+var appAlert = _.debounce(function(...params) {
+  if (DeviceHelper.isMobileDevice()) {
+    navigator.notification.alert(...params);
+  }
+  else {
+    alert(params[0]);
+  }
+
+  Spinner.spinHide();
+}, DELAY);
 
 export default class Notifications {
   static alert(message, callback) {
-    this.appAlert(message, callback, 'GGR Fleet Manager', 'OK');
+    return appAlert(message, callback, 'GGR Fleet Manager', 'OK');
   }
 
   static error(message, callback) {
-    this.appAlert(message, callback, 'Oops', 'OK');
+    return appAlert(message, callback, 'Oops', 'OK');
   }
 
   static confirm(message, callback) {
-    confirm(message, callback, 'GGR Fleet Manager', 'Yes, No');
-  }
-
-  static appAlert(...params) {
-    if (DeviceHelper.isMobileDevice()) {
-      navigator.notification.alert(...params);
-    }
-    else {
-      alert(params[0]);
-    }
-
-    Spinner.spinHide();
+    return confirm(message, callback, 'GGR Fleet Manager', 'Yes, No');
   }
 }

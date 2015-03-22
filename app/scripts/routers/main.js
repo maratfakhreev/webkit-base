@@ -22,15 +22,15 @@ export default class MainRouter extends Marionette.AppRouter {
   }
 
   onBeforeRoute() {
-    // add some filtering logic if it's necessary
+    Vent.trigger('popup:destroy');
   }
 
   onRedirectToRoot() {
-    if (Backbone.history.fragment === RoutesHelper.rootPath) {
+    if (Backbone.history.fragment === RoutesHelper.rootPath()) {
       Backbone.history.loadUrl(Backbone.history.fragment);
     }
     else {
-      this.navigate(RoutesHelper.rootPath, {trigger: true});
+      this.navigate(RoutesHelper.rootPath(), {trigger: true});
     }
   }
 
@@ -40,6 +40,6 @@ export default class MainRouter extends Marionette.AppRouter {
 
   onResumeApp() {
     App.alreadyInitialized = false;
-    this.navigate(RoutesHelper.rootPath, {trigger: true});
+    this.navigate(RoutesHelper.rootPath(), {trigger: true});
   }
 }

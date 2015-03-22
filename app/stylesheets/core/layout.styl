@@ -21,20 +21,23 @@ body
     box-sizing: border-box
     width: 100%
     height: 100%
-    transition: left 0.2s ease-out
+    transition: left 0.3s ease-out
     transform: translate3d(0, 0, 0)
     box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.57)
 
     .content-region
       position: relative
-      padding: 6rem 5% 0 5%
+      padding: 6rem 5% 2rem 5%
       height: 100%
       width: 100%
       box-sizing: border-box
+      overflow: scroll
+      -webkit-overflow-scrolling: touch
 
   &.navigation-show
     .main
       left: 320px
+      transition: left 0.3s ease-out
 
 @media screen and (max-width: 640px)
   body

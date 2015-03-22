@@ -22,7 +22,7 @@ export default class LoginView extends AbstractFormView {
     };
 
     this.events = {
-      'click @ui.submitButton': 'onFormSubmit'
+      'tap @ui.submitButton': 'onFormSubmit'
     };
 
     this.bindings = {
@@ -43,10 +43,6 @@ export default class LoginView extends AbstractFormView {
     };
 
     super(options);
-  }
-
-  onRender() {
-    this.$el.hammer();
   }
 
   onFormSubmit(event) {

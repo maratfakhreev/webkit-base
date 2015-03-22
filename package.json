@@ -72,18 +72,14 @@
     "velocity": "./bower_components/velocity/velocity.js",
     "velocity-ui": "./bower_components/velocity/velocity.ui.js",
     "nprogress": "./bower_components/nprogress/nprogress.js",
-    "hammerjs": "./bower_components/hammerjs/hammer.js",
-    "jquery-hammerjs": "./bower_components/jquery-hammerjs/jquery.hammer.js"
+    "jquery-mobile": "./vendor/scripts/jquery.mobile.custom.js"
   },
   "browserify-shim": {
     "jquery": "$",
     "underscore": "_",
-    "hammerjs": "Hammer",
-    "jquery-hammerjs": {
-      "exports": "$",
+    "jquery-mobile": {
       "depends": [
-        "jquery",
-        "hammerjs"
+        "jquery"
       ]
     },
     "backbone": {

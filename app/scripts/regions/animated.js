@@ -1,4 +1,4 @@
-export default class AnimatedRegion extends Marionette.Region {
+class AnimatedRegion extends Marionette.Region {
   constructor(options) {
     super(options);
 
@@ -11,8 +11,8 @@ export default class AnimatedRegion extends Marionette.Region {
       .html(view.el)
       .velocity('stop');
 
-    _.each(this.animation.showAnimation, (value, key) => {
-      this.$el.velocity(value.p, value.o);
+    this._itterateOverAnimations(this.animation.showAnimation, function() {
+      AnimatedRegion.trigger('region:shows', this);
     });
   }
 
@@ -22,23 +22,27 @@ export default class AnimatedRegion extends Marionette.Region {
     this.$el.velocity('stop');
 
     if (this.animation.hideAnimation) {
-      var itter = 0;
-      var length = this.animation.hideAnimation.length;
-
-      _.each(this.animation.showAnimation, (value, key) => {
-        $.Velocity.animate(
-          this.$el,
-          value.p,
-          value.o
-        ).then(() => {
-          itter++;
-          if (itter === length) this._emptyRegion(view);
-        });
+      this._itterateOverAnimations(this.animation.hideAnimation, function() {
+        this._emptyRegion(view);
+        this.$el.removeAttr('style');
+        AnimatedRegion.trigger('region:removed', this);
       });
     }
     else {
       this._emptyRegion(view);
     }
+  }
+
+  _itterateOverAnimations(animations, callback) {
+    var itter = 0;
+    var length = animations.length;
+
+    _.each(animations, (value, key) => {
+      $.Velocity.animate(this.$el, value.p, value.o).then(() => {
+        itter++;
+        if (itter === length) callback();
+      });
+    });
   }
 
   _emptyRegion(view) {
@@ -50,3 +54,7 @@ export default class AnimatedRegion extends Marionette.Region {
     return this;
   }
 }
+
+_.extend(AnimatedRegion, Backbone.Events);
+
+export default AnimatedRegion;

@@ -1,3 +1,4 @@
+import App from 'scripts/application';
 import AppConfig from 'scripts/config';
 import User from 'scripts/models/user';
 import Storage from 'scripts/services/storage';
@@ -35,8 +36,9 @@ class Session {
 
   static destroy() {
     Storage.remove(STORAGE_KEY);
-    Session.currentUser().clear();
-    Session.trigger('session:destroy');
+    this.currentUser().clear();
+    this.trigger('session:destroy');
+    App.alreadyInitialized = false;
   }
 
   static save() {
@@ -47,7 +49,7 @@ class Session {
     return this.currentUser().has(SESSION_KEY);
   }
 
-  static getToken() {
+  static get token() {
     return this.currentUser().get(SESSION_KEY);
   }
 }

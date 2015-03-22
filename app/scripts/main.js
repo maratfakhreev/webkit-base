@@ -1,4 +1,4 @@
-import 'jquery-hammerjs';
+import 'jquery-mobile';
 import 'backbone-routefilter';
 import 'backbone-stickit';
 import 'backbone-validation';
@@ -10,6 +10,4 @@ import 'nprogress';
 import 'scripts/modules/main';
 import App from 'scripts/application';
 
-document.addEventListener('deviceready', (function() {
-  App.start();
-}), false);
+App.init();

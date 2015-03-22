@@ -1,25 +1,19 @@
-module.exports = (function() {
-  function Config() {};
-
-  Config.appDir = 'app';
-  Config.publicDir = 'build/www';
-  Config.buildDir = 'build';
-  Config.env = 'development';
-  Config.platform = 'ios';
-  Config.preparing = true;
-  Config.ports = {
+module.exports = {
+  appDir: 'app',
+  publicDir: 'build/www',
+  buildDir: 'build',
+  env: 'development', // development | production
+  platform: 'desktop', // ios | android
+  preparing: true, // true | false
+  ports: {
     server: 8000,
     mocks: 8001,
     test: 9999
-  };
-
-  Config.isDevelopment = function() {
+  },
+  isDevelopment: function() {
     return this.env === 'development';
-  };
-
-  Config.isProduction = function() {
+  },
+  isProduction: function() {
     return this.env === 'production';
-  };
-
-  return Config;
-})();
+  }
+}

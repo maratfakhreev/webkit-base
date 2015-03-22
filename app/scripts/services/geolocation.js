@@ -1,12 +1,10 @@
-import AppConfig from 'scripts/config';
-import Connection from 'scripts/services/connection_state';
-
 const MAP_PIN = 'M0-165c-27.618 0-50 21.966-50 49.054C-50-88.849 0 0 0 0s50-88.849 50-115.946C50-143.034 27.605-165 0-165z';
+var currentMap = null;
 
 export default class Geolocation {
-  constructor($tagId, centerPoint = null) {
+  constructor(container, centerPoint = null) {
     if (window.google && google.maps) {
-      this.$tagId = $tagId;
+      this.container = container;
       this.centerPoint = centerPoint;
       this.setUserPosition();
       this.mapInit();
@@ -40,27 +38,24 @@ export default class Geolocation {
       }]
     };
 
-    this.map = new google.maps.Map(this.$tagId[0], mapOptions);
+    currentMap = new google.maps.Map(this.container[0], mapOptions);
   }
 
-  setUserPosition() {
-    this.userPos = {};
+  get userPosition() {
+    var userPos = {};
     navigator.geolocation.getCurrentPosition((position) => {
-      this.userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     }, () => {
       console.log('Geolocation hasn\'t work on emulator');
-      this.userPos = new google.maps.LatLng(40.766039, -73.97705829); //test coords
+      userPos = new google.maps.LatLng(40.766039, -73.97705829);
     });
+
+    return userPos;
   }
 
-  renderMarkers(lat, long) {
-    var markers = [];
-    var carPos = new google.maps.LatLng(lat, long);
-    markers.push(this.userPos);
-    markers.push(this.carPos);
-
-    for (let marker of markers) {
-      marker.setMap(this.map);
+  renderMarkers(markersCoordinates) {
+    for (let marker of markersCoordinates) {
+      marker.setMap(currentMap);
     }
   }
 }

@@ -24,7 +24,10 @@ gulp.task('browserify', function() {
   .transform(browserifyShim)
   .transform(jadeify)
   .transform(babelify.configure({
-    ignore: 'bower_components',
+    ignore: [
+      'bower_components',
+      'vendor/scripts'
+    ],
     sourceMapRelative: "./" + config.appDir
   }));
 

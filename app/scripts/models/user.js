@@ -5,7 +5,7 @@ export default class User extends Backbone.NestedModel {
   constructor(options) {
     this.urlRoot = `${AppConfig.apiPath}/sessions/sign_in`;
     this.validation = {
-      'user.email': {
+      'user.name': {
         required: true
       },
       'user.password': {

@@ -33,13 +33,14 @@ export default class MainLayout extends Marionette.LayoutView {
 
     super(options);
 
+    FastClick(this.$el[0]);
+    this.listenTo(Vent, 'navigation:hide', this.onHideMenu);
+    this.listenTo(Vent, 'navigation:show', this.onShowMenu);
     this.listenTo(Vent, 'navigation:toggle', this.onToggleMenu);
   }
 
   onRender() {
-    FastClick(this.$el[0]);
     Spinner.init();
-    this.$el.hammer();
   }
 
   onHideMenu() {
