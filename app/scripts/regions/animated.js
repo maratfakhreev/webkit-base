@@ -7,13 +7,18 @@ class AnimatedRegion extends Marionette.Region {
 
   attachHtml(view) {
     this.$el
-      .hide(0)
+      .css({display: 'none'})
       .html(view.el)
       .velocity('stop');
 
-    this._itterateOverAnimations(this.animation.showAnimation, function() {
-      AnimatedRegion.trigger('region:shows', this);
-    });
+    if (this.animation && this.animation.showAnimation) {
+      this._iterateOverAnimations(this.animation.showAnimation, function() {
+        AnimatedRegion.trigger('region:showed', this);
+      });
+    }
+    else {
+      this.$el.css({display: 'block'});
+    }
   }
 
   empty() {
@@ -21,8 +26,8 @@ class AnimatedRegion extends Marionette.Region {
     if (!view) return;
     this.$el.velocity('stop');
 
-    if (this.animation.hideAnimation) {
-      this._itterateOverAnimations(this.animation.hideAnimation, function() {
+    if (this.animation && this.animation.hideAnimation) {
+      this._iterateOverAnimations(this.animation.hideAnimation, function() {
         this._emptyRegion(view);
         this.$el.removeAttr('style');
         AnimatedRegion.trigger('region:removed', this);
@@ -33,14 +38,14 @@ class AnimatedRegion extends Marionette.Region {
     }
   }
 
-  _itterateOverAnimations(animations, callback) {
-    var itter = 0;
+  _iterateOverAnimations(animations, callback) {
+    var iterator = 0;
     var length = animations.length;
 
     _.each(animations, (value, key) => {
       $.Velocity.animate(this.$el, value.p, value.o).then(() => {
-        itter++;
-        if (itter === length) callback();
+        iterator++;
+        if (iterator === length) callback.call(this);
       });
     });
   }

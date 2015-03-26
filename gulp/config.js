@@ -3,7 +3,7 @@ module.exports = {
   publicDir: 'build/www',
   buildDir: 'build',
   env: 'development', // development | production
-  platform: 'desktop', // ios | android
+  platform: 'ios', // ios | android | browser
   preparing: true, // true | false
   ports: {
     server: 8000,

@@ -24,19 +24,29 @@ for (p in cordovaLib.cordova_platforms) {
 
 /* TASKS */
 
-gulp.task('prepare', 'Prepare application', function() {
+gulp.task('prepare', 'Prepare application for current platform', function() {
   process.chdir(buildDir);
-  cdv.prepare().then(function() {
+  cdv.prepare({platforms: [config.platform]}).then(function() {
     process.chdir(root);
   });
 });
 
-gulp.task('build', 'Prepare and compile application', function() {
+gulp.task('compile', 'Compile application for current platform', function() {
   process.chdir(buildDir);
-  cdv.build();
+  cdv.compile({platforms: [config.platform]});
 });
 
-gulp.task('run', 'Prepare, compile and emulate application', function(cb) {
+gulp.task('emulate', 'Emulate application for current platform', function() {
+  process.chdir(buildDir);
+  cdv.emulate({platforms: [config.platform]});
+});
+
+gulp.task('build', 'Prepare and compile application for current platform', function() {
+  process.chdir(buildDir);
+  cdv.build({platforms: [config.platform]});
+});
+
+gulp.task('run', 'Prepare, compile and emulate application for current platform', function() {
   process.chdir(buildDir);
   cdv.run({
     platforms: [config.platform],
@@ -54,11 +64,6 @@ gulp.task('run', 'Prepare, compile and emulate application', function(cb) {
   }
 });
 
-gulp.task('emulate', 'Emulate application', function() {
-  process.chdir(buildDir);
-  cdv.emulate({platforms: [config.platform]});
-});
-
 gulp.task('release', 'Release application', function() {
   process.chdir(buildDir);
   cdv.build({options: ['--release']});
@@ -72,13 +77,13 @@ gulp.task('create', 'Create/Recreate application', ['clean-build'], function() {
   cdv.create(buildDir, pkg.appId, pkg.name).then(function() {
     process.chdir(buildDir);
   }).then(function() {
-    return cdv.platform('add', platform_dirs);
+    cdv.platform('add', platform_dirs);
   }).then(function() {
-    return cdv.plugins('add', pkg.cordovaPlugins);
+    cdv.plugins('add', pkg.cordovaPlugins);
   });
 });
 
-gulp.task('update-platforms', 'Update all platforms', function() {
+gulp.task('update', 'Update all platforms', function() {
   process.chdir(buildDir);
 
   for (var i = 0, length = platforms.length; i < length; i++) {
