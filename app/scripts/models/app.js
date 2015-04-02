@@ -14,6 +14,10 @@ export default class AppModel extends Backbone.NestedModel {
     super(options);
 
     this.listenTo(this, 'error', this.onErrorHandler);
+
+    if (this.validation) {
+      this.listenTo(this, 'validated:invalid', this.onInvalidValidation);
+    }
   }
 
   sync(method, model, options) {
@@ -51,5 +55,10 @@ export default class AppModel extends Backbone.NestedModel {
     else {
       Notifications.error('Server error');
     }
+  }
+
+  onInvalidValidation(model, errors) {
+    var message = _.chain(errors).values().join('\n').value();
+    Notifications.error(message);
   }
 }

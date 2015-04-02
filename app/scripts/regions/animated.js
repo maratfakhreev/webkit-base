@@ -56,6 +56,7 @@ class AnimatedRegion extends Marionette.Region {
     this._destroyView();
     this.triggerMethod('empty', view);
     delete this.currentView;
+
     return this;
   }
 }

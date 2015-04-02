@@ -1,6 +1,7 @@
 import Connection from 'scripts/services/connection_state';
 import Notifications from 'scripts/services/notifications';
-import DeviceHelper from 'scripts/helpers/device';
+import Device from 'scripts/services/device';
+import Messages from 'scripts/helpers/messages';
 
 var App = new Marionette.Application();
 
@@ -14,8 +15,7 @@ App.navigate = function(route, options) {
 App.on('start', function() {
   if (Connection()) {
     Backbone.history.start();
-    $.event.special.swipe.horizontalDistanceThreshold = 130;
-    $.event.special.swipe.verticalDistanceThreshold = 130;
+    Device.setEvents();
 
     $(document).on('click', '.js-link', function(event) {
       event.preventDefault();
@@ -24,20 +24,16 @@ App.on('start', function() {
     });
   }
   else {
-    Notifications.alert('No internet connection. Please try again or later.');
+    Notifications.alert(Messages.noInternetConnectionMsg);
   }
 });
 
 App.init = function() {
-  if (DeviceHelper.isMobileDevice()) {
-    document.addEventListener('deviceready', (function() {
-      App.start();
-    }), false);
+  if (Device.isMobileDevice()) {
+    document.addEventListener('deviceready', function() { App.start(); }, false);
   }
   else {
-    $(document).ready(function() {
-      App.start();
-    });
+    $(document).ready(function() { App.start(); });
   }
 };
 

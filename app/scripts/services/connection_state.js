@@ -1,5 +1,5 @@
 export default function() {
-  var checkConnection = function() {
+  if ('ontouchstart' in window && navigator.connection) {
     var states = {};
     var networkState = navigator.connection.type;
 
@@ -12,17 +12,8 @@ export default function() {
     states[Connection.CELL] = 'Cell generic connection';
     states[Connection.NONE] = 'No network connection';
 
-    if (states[networkState] === 'No network connection') {
-      return false;
-    }
-    else {
-      return true;
-    }
-  };
-
-  if ('ontouchstart' in window) {
-    return checkConnection();
+    return (states[networkState] === 'No network connection') ? false : true;
   }
 
-  return true;
+  return (navigator.onLine) ? true : false;
 }

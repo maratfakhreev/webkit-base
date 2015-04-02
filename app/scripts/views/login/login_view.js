@@ -28,17 +28,11 @@ export default class LoginView extends AbstractFormView {
     this.bindings = {
       'input[name="name"]': {
         observe: 'user.name',
-        updateView: false,
-        setOptions: {
-          validate: true
-        }
+        updateView: false
       },
       'input[type="password"]': {
         observe: 'user.password',
-        updateView: false,
-        setOptions: {
-          validate: true
-        }
+        updateView: false
       }
     };
 
@@ -48,14 +42,11 @@ export default class LoginView extends AbstractFormView {
   onFormSubmit(event) {
     event.preventDefault();
 
-    if (this.model.isValid()) {
+    if (this.model.isValid(true)) {
       Spinner.spinShow();
       Session.create().then(function() {
         Spinner.spinHide();
       });
-    }
-    else {
-      Notifications.error(MessagesHelper.fillAllFieldsErrorMsg);
     }
   }
 }

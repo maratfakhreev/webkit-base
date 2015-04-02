@@ -7,7 +7,7 @@ export default class Spinner {
       parent: '.horizontal-spinner'
     });
     this.$spin = $('#spinner');
-    this.spinHide();
+    this.$spin.css({display: 'none'});
   }
 
   static spinShow() {

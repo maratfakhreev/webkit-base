@@ -6,6 +6,7 @@ import 'backbone-nested-model';
 import 'marionette';
 import 'velocity-ui';
 import 'nprogress';
+import 'fastclick';
 
 import 'scripts/modules/main';
 import App from 'scripts/application';

@@ -1,41 +1,45 @@
-import Vent from 'scripts/services/event_aggregator';
+var QUALITY = 70;
 
-export default class Camera {
-  constructor() {
-    this.camera = navigator.camera;
+class Camera {
+  static onChooseSuccess(imageData) {
+    Camera.trigger('photo:added', imageData);
   }
 
-  onChooseSuccess(imageData) {
-    Vent.trigger('photo:added', imageData);
-  }
-
-  onChooseDeny() {
+  static onChooseDeny() {
     return null;
   }
 
-  capturePhoto() {
-    this.camera.getPicture(
+  static capturePhoto() {
+    navigator.camera.getPicture(
       this.onChooseSuccess,
       this.onChooseDeny,
       {
-        quality: 70,
-        destinationType: this.camera.DestinationType.DATA_URL,
-        sourceType: this.camera.PictureSourceType.CAMERA,
-        encodingType: this.camera.EncodingType.JPEG,
+        quality: QUALITY,
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.CAMERA,
+        encodingType: navigator.camera.EncodingType.JPEG,
         correctOrientation: true
       }
     );
   }
 
-  getPhoto() {
-    this.camera.getPicture(
+  static getPhoto() {
+    navigator.camera.getPicture(
       this.onChooseSuccess,
       this.onChooseDeny,
       {
-        quality: 70,
-        destinationType: this.camera.DestinationType.DATA_URL,
-        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+        quality: QUALITY,
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
       }
     );
   }
+
+  static exist() {
+    if (navigator.camera) return true;
+  }
 }
+
+_.extend(Camera, Backbone.Events);
+
+export default Camera;

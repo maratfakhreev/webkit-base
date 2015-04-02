@@ -22,6 +22,10 @@ export default class DatesHelper {
     return Moment(date).format('MMMM Do YYYY, h:mm A');
   }
 
+  static currentTimeWithDelay(seconds) {
+    return Moment.tz(TIMEZONE).add(seconds, 's').format('h:mm A');
+  }
+
   static currentTime() {
     return Moment.tz(TIMEZONE).format('YYYY-MM-DDTHH:mm:ssZ');
   }
