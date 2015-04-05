@@ -22,7 +22,7 @@ export default class User extends Backbone.NestedModel {
 
   onErrorHandler(model, error) {
     if (error.status === 401 || error.status === 403) {
-      if (error.responseJSON) Notifications.alert(error.responseJSON.error);
+      if (error.responseJSON) Notifications.error(error.responseJSON.error);
     }
   }
 
