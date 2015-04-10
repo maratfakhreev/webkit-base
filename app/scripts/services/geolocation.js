@@ -1,17 +1,14 @@
-var MAP_PIN = 'M0-165c-27.618 0-50 21.966-50 49.054C-50-88.849 0 0 0 0s50-88.849 50-115.946C50-143.034 27.605-165 0-165z';
+function testPoint() {
+  return new google.maps.LatLng(40.766039, -73.97705829);
+}
 
-export default class Geolocation {
-  constructor(container, centerPoint = null) {
-    this.container = container[0];
-    this.centerPoint = centerPoint;
-    this.testPoint = new google.maps.LatLng(40.766039, -73.97705829);
-    this.mapInit();
-  }
+class GeoMap {
+  constructor(options) {
+    this.container = options.map[0];
 
-  mapInit() {
     var mapOptions = {
       zoom: 15,
-      center: this.centerPoint || this.testPoint,
+      center: options.centerPoint || testPoint(),
       panControl: false,
       zoomControl: true,
       zoomControlOptions: {
@@ -65,7 +62,7 @@ export default class Geolocation {
         var userCoordinates = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this._renderMarkersArray(this.currentMap, userCoordinates);
       }, () => {
-        this._renderMarkersArray(this.currentMap, this.testPoint);
+        this._renderMarkersArray(this.currentMap, testPoint());
       });
     }
     else {
@@ -103,14 +100,15 @@ export default class Geolocation {
     }
 
     this.markers = [];
-    var icon = {};
     _.each(this.markersCoordinates, (value, key) => {
+      var icon = {};
+
       if (this.markersImages && this.markersImages[key]) {
         icon = this.markersImages[key];
       }
       else {
         icon = {
-          path: MAP_PIN,
+          path: 'M0-165c-27.618 0-50 21.966-50 49.054C-50-88.849 0 0 0 0s50-88.849 50-115.946C50-143.034 27.605-165 0-165z',
           fillOpacity: 0.7,
           fillColor: '#333',
           strokeColor: '#235253',
@@ -128,6 +126,56 @@ export default class Geolocation {
       this.markers.push(googleMarker);
     });
   }
+}
+
+class GeoAutocomplete {
+  constructor() {
+    this.service = new google.maps.places.AutocompleteService();
+  }
+
+  getPlacePredictions(obj) {
+    return this._getPredictions('getPlacePredictions', obj);
+  }
+
+  getQueryPredictions(obj) {
+    return this._getPredictions('getQueryPredictions', obj);
+  }
+
+  _getPredictions(method, obj) {
+    var deferred = $.Deferred();
+
+    this.service[method](obj, (predictions, status) => {
+      if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        deferred.reject();
+      }
+      else {
+        var predictionsCollection = [];
+        for (let i in predictions) {
+          predictionsCollection.push(predictions[i]);
+        };
+        deferred.resolve(predictionsCollection);
+      }
+    });
+
+    return deferred.promise();
+  }
+}
+
+export default class GeolocationFactory {
+  constructor(options) {
+    this.geoClass = GeoMap;
+
+    switch (options.type) {
+      case 'map':
+        this.geoClass = GeoMap;
+        break;
+      case 'autocomplete':
+        this.geoClass = GeoAutocomplete;
+        break;
+    }
+
+    return new this.geoClass(options);
+  }
 
   static exist() {
     if (window.google && google.maps) return true;
@@ -135,5 +183,16 @@ export default class Geolocation {
 
   static createPoint(latitude, longitude) {
     return new google.maps.LatLng(latitude, longitude);
+  }
+
+  static getUserPoint() {
+    var deferred = $.Deferred();
+    navigator.geolocation.getCurrentPosition((position) => {
+      deferred.resolve(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+    }, () => {
+      deferred.resolve(testPoint());
+    });
+
+    return deferred.promise();
   }
 }
