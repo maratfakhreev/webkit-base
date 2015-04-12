@@ -6,47 +6,47 @@
     {
       "id": "1",
       "coordinates": {
-        "lat": "44.1235125234",
-        "long": "44.17358971982"
+        "lat": "40.7959921231",
+        "long": "-73.9636331233"
       },
-      "date": "2015-04-11T18:28:46+03:00",
-      "message": "Look for me here: ulitsa Komissara Gabisheva, 22A, Kazan, Respublika Tatarstan, Russia, 420111"
+      "date": "2015-04-07T18:28:46+03:00",
+      "message": "Look for me here: Manhattan, New York, United States"
     },
     {
       "id": "2",
       "coordinates": {
-        "lat": "44.1235125234",
-        "long": "44.17358971982"
+        "lat": "34.052378",
+        "long": "-118.247082"
       },
-      "date": "2015-04-11T18:19:46+03:00",
-      "message": "Look for me here: ulitsa Komissara Gabisheva, 19A, Kazan, Respublika Tatarstan, Russia, 420112"
+      "date": "2014-12-06T22:11:46+03:00",
+      "message": "Look for me here: W 2nd St, Los Angeles, United States"
     },
     {
       "id": "3",
       "coordinates": {
-        "lat": "44.1235125234",
-        "long": "44.17358971982"
+        "lat": "52.372562",
+        "long": "4.899385"
       },
-      "date": "2015-04-11T18:19:46+03:00",
-      "message": "Look for me here: ulitsa Komissara Gabisheva, 19A, Kazan, Respublika Tatarstan, Russia, 420113"
+      "date": "2015-03-11T18:19:46+03:00",
+      "message": "Look for me here: Amsterdam, North Holland, Netherlands"
     },
     {
       "id": "4",
       "coordinates": {
-        "lat": "44.1235125234",
-        "long": "44.17358971982"
+        "lat": "53.081618",
+        "long": "8.832937"
       },
-      "date": "2015-04-11T18:19:46+03:00",
-      "message": "Look for me here: ulitsa Komissara Gabisheva, 19A, Kazan, Respublika Tatarstan, Russia, 420114"
+      "date": "2014-11-11T14:33:46+03:00",
+      "message": "Look for me here: Schwachhausen, Bremen, Germany"
     },
     {
       "id": "5",
       "coordinates": {
-        "lat": "44.1235125234",
-        "long": "44.17358971982"
+        "lat": "40.7959921231",
+        "long": "-73.9636331233"
       },
-      "date": "2015-04-11T18:33:46+03:00",
-      "message": "Look for me here: ulitsa Komissara Gabisheva, 9A, Kazan, Respublika Tatarstan, Russia, 420115"
+      "date": "2013-11-11T14:33:46+03:00",
+      "message": "Look for me here: Manhattan, New York, United States"
     }
   ]
 }
