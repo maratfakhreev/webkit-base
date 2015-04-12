@@ -66,7 +66,7 @@ export default class MapView extends AbstractFormView {
               long: userPoint.lng()
             },
             'message': `Look for me here: ${address[0].formatted_address}`
-          })
+          });
         });
       });
     }
