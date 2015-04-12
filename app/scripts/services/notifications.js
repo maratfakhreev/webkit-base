@@ -23,7 +23,7 @@ var appAlert = _.debounce(function(...params) {
 
 export default class Notifications {
   static alert(message, callback) {
-    return appAlert(message, callback, 'GoGreenRide', 'OK');
+    return appAlert(message, callback, 'WebkitBase', 'OK');
   }
 
   static error(message, callback) {
@@ -31,6 +31,6 @@ export default class Notifications {
   }
 
   static confirm(message, callback) {
-    return confirm(message, callback, 'GoGreenRide', ['Yes', 'No']);
+    return confirm(message, callback, 'WebkitBase', ['Yes', 'No']);
   }
 }

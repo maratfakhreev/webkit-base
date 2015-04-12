@@ -53,7 +53,8 @@
     "org.apache.cordova.contacts",
     "org.apache.cordova.device-motion",
     "org.apache.cordova.vibration",
-    "org.apache.cordova.file-transfer"
+    "org.apache.cordova.file-transfer",
+    "org.apache.cordova.inappbrowser"
   ],
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
