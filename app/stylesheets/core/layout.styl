@@ -32,7 +32,21 @@ body
       overflow: scroll
       -webkit-overflow-scrolling: touch
 
+      &::after
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        z-index: 1000
+        display: none
+
   &.navigation-show
     .main
       transform: translate3d(80%, 0, 0)
       transition: all 0.3s ease
+
+      .content-region
+        &::after
+          display: block
