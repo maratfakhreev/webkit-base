@@ -1,4 +1,4 @@
-var QUALITY = 70;
+const QUALITY = 70;
 
 class Camera {
   static onChooseSuccess(imageData) {

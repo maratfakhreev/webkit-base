@@ -83,12 +83,6 @@ gulp.task('create', 'Create/Recreate application', ['clean-build'], function() {
   });
 });
 
-gulp.task('reinstall-plugins', function(){
-  process.chdir(buildDir);
-  cdv.plugins('rm', pkg.cordovaPlugins);
-  cdv.plugins('add', pkg.cordovaPlugins);
-});
-
 gulp.task('update', 'Update all platforms', function() {
   process.chdir(buildDir);
 
@@ -131,4 +125,10 @@ gulp.task('rm-plugin', function() {
   options: {
     'plugin <pluginid>|<directory>|<giturl>': 'remove specified plugin'
   }
+});
+
+gulp.task('install-plugins', 'Install/Reinstall plugins', function(){
+  process.chdir(buildDir);
+  cdv.plugins('rm', pkg.cordovaPlugins);
+  cdv.plugins('add', pkg.cordovaPlugins);
 });
