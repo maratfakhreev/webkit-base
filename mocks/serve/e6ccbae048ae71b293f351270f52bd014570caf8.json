@@ -1,0 +1,6 @@
+{
+  "requestUrl": "/api/posts/5",
+  "contentType": "application/javascript",
+  "statusCode": 200,
+  "data": {}
+}

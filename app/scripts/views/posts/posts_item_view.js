@@ -1,3 +1,4 @@
+import Dates from 'scripts/helpers/dates';
 import template from 'templates/posts/posts_item';
 
 export default class PostsItemView extends Marionette.ItemView {
@@ -17,12 +18,20 @@ export default class PostsItemView extends Marionette.ItemView {
       'tap @ui.deleteButton': 'onDeleteItem'
     };
 
+    this.templateHelpers = {
+      dateHumanize: function(date) {
+        return Dates.convertToFormattedDateTime(date);
+      }
+    };
+
     super(options);
   }
 
   onHideSwipedPart(event, data) {
-    event.stopPropagation();
-    this.ui.swipeInner.removeClass('swiped');
+    if (this.ui.swipeInner.hasClass('swiped')) {
+      event.stopPropagation();
+      this.ui.swipeInner.removeClass('swiped');
+    }
   }
 
   onShowSwipedPart(event, data) {

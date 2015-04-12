@@ -39,7 +39,6 @@ export default class MainRouter extends Marionette.AppRouter {
   }
 
   onResumeApp() {
-    App.alreadyInitialized = false;
-    this.navigate(RoutesHelper.rootPath(), {trigger: true});
+    // do something when user returns to the app
   }
 }
