@@ -126,3 +126,9 @@ gulp.task('rm-plugin', function() {
     'plugin <pluginid>|<directory>|<giturl>': 'remove specified plugin'
   }
 });
+
+gulp.task('install-plugins', 'Install/Reinstall plugins', function(){
+  process.chdir(buildDir);
+  cdv.plugins('rm', pkg.cordovaPlugins);
+  cdv.plugins('add', pkg.cordovaPlugins);
+});

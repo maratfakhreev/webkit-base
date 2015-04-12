@@ -24,7 +24,7 @@ export default class AppModel extends Backbone.NestedModel {
     if (Connection()) {
       if (Session.isLoggedIn()) {
         options.headers = options.headers || {};
-        _.extend(options.headers, {'Authorization': `Token token=${Session.getToken()}`});
+        _.extend(options.headers, {'Authorization': `Token token=${Session.token}`});
       }
     }
     else {

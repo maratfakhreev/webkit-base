@@ -14,7 +14,7 @@ export default class AppCollection extends Backbone.Collection {
     if (Connection()) {
       if (Session.isLoggedIn()) {
         options.headers = options.headers || {};
-        _.extend(options.headers, {'Authorization': `Token token=${Session.getToken()}`});
+        _.extend(options.headers, {'Authorization': `Token token=${Session.token}`});
       }
     }
     else {
