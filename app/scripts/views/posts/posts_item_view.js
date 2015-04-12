@@ -1,4 +1,5 @@
 import Dates from 'scripts/helpers/dates';
+import Vent from 'scripts/services/event_aggregator';
 import template from 'templates/posts/posts_item';
 
 export default class PostsItemView extends Marionette.ItemView {
@@ -36,6 +37,7 @@ export default class PostsItemView extends Marionette.ItemView {
 
   onShowSwipedPart(event, data) {
     event.stopPropagation();
+    Vent.trigger('swipe:hide');
     this.ui.swipeInner.addClass('swiped');
   }
 
