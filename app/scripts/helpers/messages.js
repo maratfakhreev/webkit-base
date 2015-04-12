@@ -4,7 +4,7 @@ export default {
   serverErrorMsg: 'Problems on server side',
   fillAllFieldsErrorMsg: 'Please fill all the fields',
   passwordErrorMsg: 'Password confirmation must be the same as password',
-  authErrorMsg: 'Authorization failed. Please try later',
+  authErrorMsg: 'Authorization failed or you declined the operation. Please try later',
   allAuthErrorMsg: 'You must be logged in at least one social network',
   postCreateSuccessMsg: 'Your post successfully created'
 };

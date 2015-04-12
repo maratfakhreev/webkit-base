@@ -54,7 +54,8 @@
     "org.apache.cordova.device-motion",
     "org.apache.cordova.vibration",
     "org.apache.cordova.file-transfer",
-    "https://github.com/oauth-io/oauth-phonegap"
+    "https://github.com/oauth-io/oauth-phonegap",
+    "org.apache.cordova.inappbrowser"
   ],
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",

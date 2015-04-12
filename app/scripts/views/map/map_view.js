@@ -74,7 +74,7 @@ export default class MapView extends AbstractFormView {
 
   onCheckIn() {
     Geolocation.getUserPoint().then((userPoint) => {
-      if (OAuth.create('twitter') || OAuth.create('facebook')) {
+      if (this.twitterIsActive || this.facebookIsActive) {
         Spinner.show();
         this.geocoder.getStreetAddress(userPoint).then((address) => {
           this.model.set({
@@ -89,11 +89,11 @@ export default class MapView extends AbstractFormView {
               Vent.trigger('post:add', this.model);
               Notifications.alert(Messages.postCreateSuccessMsg);
 
-              if (OAuth.create('twitter') && this.ui.twitterIcon.hasClass('selected')) {
+              if (this.twitterIsActive) {
                 this.model.postToTwitter();
               }
 
-              if (OAuth.create('facebook') && this.ui.facebookIcon.hasClass('selected')) {
+              if (this.facebookIsActive) {
                 this.model.postToFacebook();
               }
             },
@@ -119,14 +119,22 @@ export default class MapView extends AbstractFormView {
 
   _activateProvider(provider, providerIcon) {
     if (OAuth.create(provider)) {
-      providerIcon.removeClass('selected');
+      providerIcon.toggleClass('selected');
     }
     else {
       OAuth.popup(provider, {cache: true}).done(function() {
         providerIcon.addClass('selected');
-      }).fail(function(err) {
+      }).fail(function() {
         Notifications.error(Messages.authErrorMsg);
       });
     }
+  }
+
+  get twitterIsActive() {
+    return OAuth.create('twitter') && this.ui.twitterIcon.hasClass('selected');
+  }
+
+  get facebookIsActive() {
+    return OAuth.create('facebook') && this.ui.facebookIcon.hasClass('selected');
   }
 }
