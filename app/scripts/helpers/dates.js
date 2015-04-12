@@ -35,4 +35,12 @@ export default class DatesHelper {
     d.minutes(d.minutes() + offsetTime);
     return d;
   }
+
+  static now() {
+    return Moment.tz(TIMEZONE).format();
+  }
+
+  static getTime(date) {
+    return Moment.tz(date, TIMEZONE);
+  }
 }

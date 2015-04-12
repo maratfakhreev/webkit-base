@@ -7,7 +7,7 @@ export default class MainRouter extends Marionette.AppRouter {
   constructor(options) {
     this.appRoutes = {
       '': 'root',
-      'route': 'route'
+      'posts': 'posts'
     };
 
     this.before = {

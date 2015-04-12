@@ -15,10 +15,13 @@ class Camera {
       this.onChooseDeny,
       {
         quality: QUALITY,
-        destinationType: navigator.camera.DestinationType.FILE_URI,
+        allowEdit : true,
+        destinationType: navigator.camera.DestinationType.DATA_URL,
         sourceType: navigator.camera.PictureSourceType.CAMERA,
         encodingType: navigator.camera.EncodingType.JPEG,
-        correctOrientation: true
+        correctOrientation: true,
+        targetWidth: 512,
+        targetHeight: 512
       }
     );
   }
@@ -29,7 +32,8 @@ class Camera {
       this.onChooseDeny,
       {
         quality: QUALITY,
-        destinationType: navigator.camera.DestinationType.FILE_URI,
+        allowEdit : false,
+        destinationType: navigator.camera.DestinationType.DATA_URL,
         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
       }
     );

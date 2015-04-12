@@ -4,8 +4,8 @@ export default class Device {
   static setEvents() {
     if (Device.isMobileDevice()) {
       if (FastClick) FastClick.attach(document.body);
-      $.event.special.swipe.horizontalDistanceThreshold = 100;
-      $.event.special.swipe.verticalDistanceThreshold = 100;
+      $.event.special.swipe.horizontalDistanceThreshold = 70;
+      $.event.special.swipe.verticalDistanceThreshold = 70;
 
       document.addEventListener('resume', function() {
         Vent.trigger('app:resume');

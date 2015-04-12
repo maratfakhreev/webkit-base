@@ -150,10 +150,27 @@ class GeoAutocomplete {
       }
       else {
         var predictionsCollection = [];
-        for (let i in predictions) {
-          predictionsCollection.push(predictions[i]);
-        };
+        for (let prediction of predictions) {
+          predictionsCollection.push(prediction);
+        }
         deferred.resolve(predictionsCollection);
+      }
+    });
+
+    return deferred.promise();
+  }
+}
+
+class GeoGeocoder {
+  constructor() {
+    this.service = new google.maps.Geocoder();
+  }
+
+  getStreetAddress(latLng) {
+    var deferred = $.Deferred();
+    this.service.geocode({latLng}, function(response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        deferred.resolve(response);
       }
     });
 
@@ -171,6 +188,9 @@ export default class GeolocationFactory {
         break;
       case 'autocomplete':
         this.geoClass = GeoAutocomplete;
+        break;
+      case 'geocoder':
+        this.geoClass = GeoGeocoder;
         break;
     }
 

@@ -83,6 +83,12 @@ gulp.task('create', 'Create/Recreate application', ['clean-build'], function() {
   });
 });
 
+gulp.task('reinstall-plugins', function(){
+  process.chdir(buildDir);
+  cdv.plugins('rm', pkg.cordovaPlugins);
+  cdv.plugins('add', pkg.cordovaPlugins);
+});
+
 gulp.task('update', 'Update all platforms', function() {
   process.chdir(buildDir);
 

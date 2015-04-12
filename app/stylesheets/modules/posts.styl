@@ -1,0 +1,133 @@
+body
+  .main
+    .content-region
+      padding: 4.3rem 0 0 0
+      position: relative
+
+.map
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width: 100%
+  height: 100%
+  background-color: #e9e5dc
+
+.social-icons
+  position: absolute
+  width: 5rem
+  left: 50%
+  bottom: 1.2rem
+  margin-left: -2.5rem
+  z-index: 20
+
+  .social-icon
+    color: #999
+    font-size: 2.5rem
+
+    &.selected
+      color: #333
+
+    &:first-child
+      margin-right: 0.5rem
+
+    &:focus
+    &:active
+      color: #333
+
+.map-controls
+  position: fixed
+  bottom: 0
+  left: 1rem
+  right: 1rem
+  bottom: 3rem
+  height: 10rem
+  background-color: rgba(#fff, 0.7)
+  border-radius: 0.8rem
+  z-index: 10
+
+  .position-picker
+    width: 4rem
+    height: 4rem
+    background-color: #333
+    border-radius: 50%
+    position: absolute
+    left: 50%
+    top: -2rem
+    margin-left: -2rem
+
+  .get-user-position
+    width: 100%
+    height: 100%
+    font-size: 2rem
+    line-height: 4rem
+    text-align: center
+    color: #fff
+
+  .map-text
+    width: 90%
+    height: 60%
+    padding: 0.5rem
+    margin: 15% 5% 0 5%
+
+.posts-item
+  display: block
+  width: 100%
+  overflow: hidden
+  padding: 0
+  border-bottom: 1px solid #9daca9
+  position: relative
+
+  span
+    display: block
+
+.swipe-item-inner
+  position: relative
+  min-height: 5rem
+  height: 100%
+  transform: translate3d(0, 0, 0)
+  transition: all 0.5s ease
+  clearfix()
+
+  .swipe-button
+    position: absolute
+    top: 0
+    right: -5rem
+    bottom: 0
+    width: 5rem
+    float: right
+    background-color: #d45f53
+
+  .swipe-button-inner
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    font-size: 1rem
+    margin-top: -0.5rem
+    text-align: center
+    color: #fff
+
+  .item
+    padding: 0.8rem
+    height: 100%
+
+  .message
+    padding-top: 0.7rem
+    line-height: 1.1
+    color: #333
+    font-size: 0.8rem
+
+  .coordinate
+    p
+      color: #000
+
+    span
+      color: #666
+      float: left
+      margin-right: 0.5rem
+
+  &.swiped
+    transform: translate3d(-5rem, 0, 0)
+    transition: all 0.5s ease

@@ -1,5 +1,6 @@
 {
   "apiPath": "http://10.0.1.4:8000/api",
+  "oAuth": "K9SqnwGnKegsW0IVE0IePfFoaRg",
   "sessionKey": "token",
   "storageKey": "user_session"
 }

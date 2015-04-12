@@ -1,0 +1,52 @@
+{
+  "requestUrl": "/api/posts",
+  "contentType": "application/javascript",
+  "statusCode": 200,
+  "data": [
+    {
+      "id": "1",
+      "coordinates": {
+        "lat": "44.1235125234",
+        "long": "44.17358971982"
+      },
+      "date": "2015-04-11T18:28:46+03:00",
+      "message": "Look for me here: ulitsa Komissara Gabisheva, 22A, Kazan, Respublika Tatarstan, Russia, 420111"
+    },
+    {
+      "id": "2",
+      "coordinates": {
+        "lat": "44.1235125234",
+        "long": "44.17358971982"
+      },
+      "date": "2015-04-11T18:19:46+03:00",
+      "message": "Look for me here: ulitsa Komissara Gabisheva, 19A, Kazan, Respublika Tatarstan, Russia, 420112"
+    },
+    {
+      "id": "3",
+      "coordinates": {
+        "lat": "44.1235125234",
+        "long": "44.17358971982"
+      },
+      "date": "2015-04-11T18:19:46+03:00",
+      "message": "Look for me here: ulitsa Komissara Gabisheva, 19A, Kazan, Respublika Tatarstan, Russia, 420113"
+    },
+    {
+      "id": "4",
+      "coordinates": {
+        "lat": "44.1235125234",
+        "long": "44.17358971982"
+      },
+      "date": "2015-04-11T18:19:46+03:00",
+      "message": "Look for me here: ulitsa Komissara Gabisheva, 19A, Kazan, Respublika Tatarstan, Russia, 420114"
+    },
+    {
+      "id": "5",
+      "coordinates": {
+        "lat": "44.1235125234",
+        "long": "44.17358971982"
+      },
+      "date": "2015-04-11T18:33:46+03:00",
+      "message": "Look for me here: ulitsa Komissara Gabisheva, 9A, Kazan, Respublika Tatarstan, Russia, 420115"
+    }
+  ]
+}
