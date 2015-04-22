@@ -1,7 +1,7 @@
 {
   "name": "WebkitBase",
   "appId": "com.webkitbase",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "authors": [
     "Marat Fakhreev <marat.fakhreev@gmail.com>"
   ],
@@ -31,6 +31,13 @@
     "jadeify": "^4.0.0",
     "jeet": "^6.1.2",
     "jshint-stylish": "^1.0.1",
+    "karma": "~0.12.16",
+    "karma-browserify": "^1.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-mocha": "^0.1.4",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon": "^1.0.3",
     "require-dir": "~0.1.0",
     "run-sequence": "~1.0.1",
     "shelljs": "^0.3.0",
@@ -68,7 +75,6 @@
     "moment": "./bower_components/moment/moment.js",
     "moment-timezone": "./bower_components/moment-timezone/builds/moment-timezone-with-data.js",
     "fastclick": "./bower_components/fastclick/lib/fastclick.js",
-    "spinner": "./bower_components/spinjs/spin.js",
     "velocity": "./bower_components/velocity/velocity.js",
     "velocity-ui": "./bower_components/velocity/velocity.ui.js",
     "nprogress": "./bower_components/nprogress/nprogress.js",
