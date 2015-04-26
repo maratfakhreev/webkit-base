@@ -8,17 +8,26 @@ Install Node.js
 
 ## Prepare repository
 
-Clone repository and bootstrap:
+Clone repository and setup:
 
     git clone git@github.com:maratfakhreev/webkitbase.git webkit-base
     cd webkit-base
-    bin/bootstrap
+    bin/setup
 
 ## Prepare application
 
 Create cordova project with iOS and Android platforms
 
     gulp create
+
+## Setup your environments config
+
+Override configs files if it is necessary. Configs located in the `app/config/environments`
+
+### Note
+If you use a local API to test the application on device make sure that `apiPath` property is equal to `http://LOCAL_IP_ADDRESS/api`
+
+If you use device simulators `apiPath` can be `http://localhost:8000/api`
 
 ## Run application
 
