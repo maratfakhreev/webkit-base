@@ -5,6 +5,10 @@
   "authors": [
     "Marat Fakhreev <marat.fakhreev@gmail.com>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maratfakhreev/webkit-base.git"
+  },
   "devDependencies": {
     "autoprefixer-stylus": "^0.2.0",
     "babelify": "^5.0.3",
@@ -12,7 +16,7 @@
     "browserify": "^8.0.1",
     "browserify-shim": "^3.8.2",
     "connect-prism": "^1.0.1",
-    "cordova-lib": "^4.2.0",
+    "cordova-lib": "^5.0.0",
     "del": "^1.1.1",
     "grunt": "^0.4.5",
     "gulp": "~3.8.11",
@@ -46,23 +50,23 @@
     "yargs": "^2.3.0"
   },
   "dependencies": {
-    "cordova-android": "^3.7.1",
+    "cordova-android": "^4.0.0",
     "cordova-browser": "^3.6.0",
-    "cordova-ios": "^3.7.0"
+    "cordova-ios": "^3.8.0"
   },
-  "cordovaPlugins": [
-    "org.apache.cordova.camera",
-    "org.apache.cordova.device",
-    "org.apache.cordova.dialogs",
-    "org.apache.cordova.geolocation",
-    "org.apache.cordova.network-information",
-    "org.apache.cordova.splashscreen",
-    "org.apache.cordova.contacts",
-    "org.apache.cordova.device-motion",
-    "org.apache.cordova.vibration",
-    "org.apache.cordova.file-transfer",
-    "https://github.com/oauth-io/oauth-phonegap",
-    "org.apache.cordova.inappbrowser"
+  "plugins": [
+    "cordova-plugin-camera",
+    "cordova-plugin-device",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-network-information",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-contacts",
+    "cordova-plugin-device-motion",
+    "cordova-plugin-vibration",
+    "cordova-plugin-inappbrowser",
+    "https://github.com/oauth-io/oauth-phonegap"
   ],
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
