@@ -1,0 +1,11 @@
+{
+  "requestUrl": "/api/sessions/sign_in",
+  "contentType": "application/javascript",
+  "statusCode": 200,
+  "data": {
+    "token": "12937698127698712936",
+    "first_name": "Marat",
+    "last_name": "Fakhreev",
+    "email": "marat.fakhreev@gmail.com"
+  }
+}
