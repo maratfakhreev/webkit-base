@@ -4,14 +4,20 @@ var prism = require('connect-prism');
 var config = require('../config');
 
 gulp.task('server', function() {
+  var context = '/api';
+
   prism.create({
     name: 'serve',
     mode: 'mock',
-    context: '/api',
+    context: context,
     host: 'localhost',
     port: 8001,
     delay: 0,
-    rewrite: {}
+    rewrite: {},
+    mockFilenameGenerator: function(config, req) {
+      var url = req.url + '_' + req.method + '.json';
+      return url.replace(context + '/', '').replace(/\//g, '_');
+    }
   });
 
   browserSync({
