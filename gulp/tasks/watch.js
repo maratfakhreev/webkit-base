@@ -10,12 +10,14 @@ gulp.task('watch', function() {
       cordovaPrepare
     );
   });
+
   gulp.watch(config.appDir + "/*.jade", function() {
     runSequence(
       'templates',
       cordovaPrepare
     );
   });
+
   gulp.watch([
     config.appDir + "/images/**/*",
     config.appDir + "/fonts/**/*"

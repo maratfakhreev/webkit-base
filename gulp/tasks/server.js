@@ -15,7 +15,7 @@ gulp.task('server', function() {
     delay: 0,
     rewrite: {},
     mockFilenameGenerator: function(config, req) {
-      var url = req.url + '_' + req.method + '.json';
+      var url = req.url + '__' + req.method + '.json';
       return url.replace(context + '/', '').replace(/\//g, '_');
     }
   });

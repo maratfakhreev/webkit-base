@@ -1,12 +1,11 @@
 var path = require('path');
 var gulp = require('gulp');
-var shelljs = require('shelljs');
 var cordovaLib = require('cordova-lib');
 var argv = require('yargs').argv;
 var pkg = require('../../package.json');
 var config = require('../config');
-var root = process.cwd();
-var buildDir = path.join(root, config.buildDir);
+var rootPath = process.cwd();
+var buildDir = path.join(rootPath, config.buildDir);
 var cdv = cordovaLib.cordova.raw;
 var platforms = [];
 var platform_dirs = [];
@@ -18,7 +17,7 @@ for (p in cordovaLib.cordova_platforms) {
 
   if (pkg.dependencies[pname]) {
     platforms.push(p);
-    platform_dirs.push(path.join(root, 'node_modules', pname));
+    platform_dirs.push(path.join(rootPath, 'node_modules', pname));
   }
 }
 
@@ -27,7 +26,7 @@ for (p in cordovaLib.cordova_platforms) {
 gulp.task('prepare', 'Prepare application for current platform', function() {
   process.chdir(buildDir);
   return cdv.prepare({platforms: [config.platform]}).then(function() {
-    process.chdir(root);
+    process.chdir(rootPath);
   });
 });
 
