@@ -4,7 +4,8 @@ module.exports = {
   buildDir: 'build',
   env: 'development', // development | production
   platform: 'ios', // ios | android | browser
-  preparing: true, // true | false
+  precompile: true, // true | false
+  precompileType: 'prepare', // prepare | compile | build | run
   ports: {
     server: 8000,
     mocks: 8001,

@@ -38,6 +38,7 @@ Instrumental environment for developing cross-platform applications base on Apac
     "require-dir"
     "run-sequence"
     "shelljs"
+    "underscore"
     "vinyl-transform"
     "watchify"
     "yargs"
