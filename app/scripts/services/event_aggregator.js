@@ -1,6 +1,7 @@
 var channels = {};
 var instance = null;
 
+// base EventAggregator pattern
 class CustomEventAggregator {
   static on(channel, callback) {
     if (!channels[channel]) {

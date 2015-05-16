@@ -5,6 +5,7 @@ var config = require('../config');
 
 gulp.task('server', function() {
   var context = '/api';
+  var replacer = '__';
 
   prism.create({
     name: 'serve',
@@ -15,8 +16,8 @@ gulp.task('server', function() {
     delay: 0,
     rewrite: {},
     mockFilenameGenerator: function(config, req) {
-      var url = req.url + '__' + req.method + '.json';
-      return url.replace(context + '/', '').replace(/\//g, '_');
+      var url = req.url + replacer + req.method + '.json';
+      return url.replace(context + '/', '').replace(/\//g, replacer);
     }
   });
 
