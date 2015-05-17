@@ -1,12 +1,12 @@
+var _ = require('underscore');
 var path = require('path');
 var gulp = require('gulp');
-var shelljs = require('shelljs');
 var cordovaLib = require('cordova-lib');
 var argv = require('yargs').argv;
 var pkg = require('../../package.json');
 var config = require('../config');
-var root = process.cwd();
-var buildDir = path.join(root, config.buildDir);
+var rootPath = process.cwd();
+var buildDir = path.join(rootPath, config.buildDir);
 var cdv = cordovaLib.cordova.raw;
 var platforms = [];
 var platform_dirs = [];
@@ -18,39 +18,96 @@ for (p in cordovaLib.cordova_platforms) {
 
   if (pkg.dependencies[pname]) {
     platforms.push(p);
-    platform_dirs.push(path.join(root, 'node_modules', pname));
+    platform_dirs.push(path.join(rootPath, 'node_modules', pname));
   }
 }
 
-/* TASKS */
+/* Tasks helpers */
+
+function changeProcessDir(process) {
+  process.chdir(buildDir);
+}
+
+function prepareOptions(argv) {
+  var options = [];
+
+  if (argv) {
+    var args = _.pairs(argv).slice(1, -1);
+    _.each(args, function(value, key) {
+      var str = '';
+      if (value[0] === 'platform') return;
+      str += '--' + value[0];
+      if (!_.isBoolean(value[1])) str += '=' + value[1];
+      options.push(str);
+    });
+  }
+
+  return options;
+}
+
+function preparePlatform(platform) {
+  if (!platform) platform = config.platform;
+  changeProcessDir(process);
+  return platform;
+}
+
+/* Tasks */
 
 gulp.task('prepare', 'Prepare application for current platform', function() {
-  process.chdir(buildDir);
-  return cdv.prepare({platforms: [config.platform]}).then(function() {
-    process.chdir(root);
+  var platform = preparePlatform(argv.platform);
+  return cdv.prepare({
+    platforms: [platform],
+    options: prepareOptions(argv)
+  }).then(function() {
+    process.chdir(rootPath);
   });
+}, {
+  options: {
+    'platform <platform>': 'prepare on specified platform'
+  }
 });
 
 gulp.task('compile', 'Compile application for current platform', function() {
-  process.chdir(buildDir);
-  return cdv.compile({platforms: [config.platform]});
+  var platform = preparePlatform(argv.platform);
+  return cdv.compile({
+    platforms: [platform],
+    options: prepareOptions(argv)
+  });
+}, {
+  options: {
+    'platform <platform>': 'compile on specified platform'
+  }
 });
 
 gulp.task('emulate', 'Emulate application for current platform', function() {
-  process.chdir(buildDir);
-  return cdv.emulate({platforms: [config.platform]});
+  var platform = preparePlatform(argv.platform);
+  return cdv.emulate({
+    platforms: [platform],
+    options: prepareOptions(argv)
+  });
+}, {
+  options: {
+    'platform <platform>': 'emulate on specified platform'
+  }
 });
 
 gulp.task('build', 'Prepare and compile application for current platform', function() {
-  process.chdir(buildDir);
-  return cdv.build({platforms: [config.platform]});
+  var platform = preparePlatform(argv.platform);
+  return cdv.build({
+    platforms: [platform],
+    options: prepareOptions(argv)
+  });
+}, {
+  options: {
+    'platform <platform>': 'build on specified platform'
+  }
 });
 
 gulp.task('run', 'Prepare, compile and emulate application for current platform', function() {
-  process.chdir(buildDir);
+  var platform = preparePlatform(argv.platform);
   return cdv.run({
-    platforms: [config.platform],
-    options: ['--device']
+    platforms: [platform],
+    options: prepareOptions(argv)
   });
 }, {
   options: {
@@ -65,7 +122,7 @@ gulp.task('run', 'Prepare, compile and emulate application for current platform'
 });
 
 gulp.task('release', 'Release application', function() {
-  process.chdir(buildDir);
+  changeProcessDir(process);
   return cdv.build({options: ['--release']});
 }, {
   options: {
@@ -75,7 +132,7 @@ gulp.task('release', 'Release application', function() {
 
 gulp.task('create', 'Create/Recreate application', ['clean-build'], function() {
   return cdv.create(buildDir, pkg.appId, pkg.name).then(function() {
-    process.chdir(buildDir);
+    changeProcessDir(process);
   }).then(function() {
     return cdv.platform('add', platform_dirs);
   }).then(function() {
@@ -85,12 +142,12 @@ gulp.task('create', 'Create/Recreate application', ['clean-build'], function() {
 });
 
 gulp.task('update-platforms', 'update all installed platforms', function() {
-  process.chdir(buildDir);
+  changeProcessDir(process);
   return cdv.platform('update', platforms);
 });
 
 gulp.task('add-platform', function() {
-  process.chdir(buildDir);
+  changeProcessDir(process);
   return cdv.platform('add', argv.platform);
 }, {
   options: {
@@ -99,7 +156,7 @@ gulp.task('add-platform', function() {
 });
 
 gulp.task('rm-platform', function() {
-  process.chdir(buildDir);
+  changeProcessDir(process);
   return cdv.platform('rm', argv.platform);
 }, {
   options: {
@@ -108,7 +165,7 @@ gulp.task('rm-platform', function() {
 });
 
 gulp.task('add-plugin', function() {
-  process.chdir(buildDir);
+  changeProcessDir(process);
   return cdv.plugins('add', argv.plugin);
 }, {
   options: {
@@ -117,7 +174,7 @@ gulp.task('add-plugin', function() {
 });
 
 gulp.task('rm-plugin', function() {
-  process.chdir(buildDir);
+  changeProcessDir(process);
   return cdv.plugins('rm', argv.plugin);
 }, {
   options: {

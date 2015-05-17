@@ -7,9 +7,9 @@ var root = process.cwd();
 var buildDir = path.join(root, config.buildDir);
 
 function cordovaPrepare() {
-  if (!config.preparing) return;
+  if (!config.precompile) return;
   process.chdir(buildDir);
-  cdv.prepare().then(function() {
+  cdv[config.precompileType]().then(function() {
     process.chdir(root);
   });
 };

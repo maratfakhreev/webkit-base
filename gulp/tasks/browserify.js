@@ -32,12 +32,12 @@ gulp.task('browserify', function() {
   }));
 
   function bundle() {
-    var bundle = transform(function(filename) {
+    var bundleTransform = transform(function(filename) {
       return bundler.bundle();
     });
 
     return gulp.src(entryPoint)
-      .pipe(bundle)
+      .pipe(bundleTransform)
       .on('error', notify.onError())
       .pipe(rename({basename: 'application'}))
       .pipe(gulp.dest(config.publicDir))
