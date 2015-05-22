@@ -103,11 +103,9 @@ If you use device simulators `apiPath` can be `http://localhost:8000/api`
 ## Run application
 
     gulp
-    gulp prepare
 
 Then you can use XCode build system for example. Or if you don't want:
 
-    gulp
     gulp run [platform_name]
 
 ## List of available tasks
