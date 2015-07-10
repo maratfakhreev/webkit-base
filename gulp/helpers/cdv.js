@@ -1,5 +1,4 @@
 var path = require('path');
-var transform = require('vinyl-transform');
 var cdv = require('cordova-lib').cordova.raw;
 var debounce = require('./debouncer');
 var config = require('../config');

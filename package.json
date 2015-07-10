@@ -1,7 +1,7 @@
 {
   "name": "WebkitBase",
   "appId": "com.webkitbase",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "authors": [
     "Marat Fakhreev <marat.fakhreev@gmail.com>"
   ],
@@ -9,17 +9,23 @@
     "type": "git",
     "url": "https://github.com/maratfakhreev/webkit-base.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer-stylus": "^0.2.0",
+    "jeet": "^6.1.2",
+    "cordova-android": "^4.0.2",
+    "cordova-browser": "^3.6.0",
+    "cordova-ios": "^3.8.0"
+  },
+  "devDependencies": {
     "babelify": "^5.0.3",
     "browser-sync": "^2.2.3",
     "browserify": "^8.0.1",
     "browserify-shim": "^3.8.2",
     "connect-prism": "^1.0.1",
-    "cordova-lib": "^5.0.0",
+    "cordova-lib": "^5.1.1",
     "del": "^1.1.1",
     "grunt": "^0.4.5",
-    "gulp": "~3.8.11",
+    "gulp": "~3.9.0",
     "gulp-concat": "~2.4.1",
     "gulp-cssimport": "~1.2.3",
     "gulp-help": "^1.3.3",
@@ -33,7 +39,6 @@
     "gulp-replace-task": "^0.1.0",
     "gulp-stylus": "~1.3.3",
     "jadeify": "^4.0.0",
-    "jeet": "^6.1.2",
     "jshint-stylish": "^1.0.1",
     "karma": "~0.12.16",
     "karma-browserify": "^1.0.0",
@@ -49,11 +54,6 @@
     "vinyl-transform": "^1.0.0",
     "watchify": "^2.2.1",
     "yargs": "^2.3.0"
-  },
-  "dependencies": {
-    "cordova-android": "^4.0.0",
-    "cordova-browser": "^3.6.0",
-    "cordova-ios": "^3.8.0"
   },
   "plugins": [
     "cordova-plugin-camera",
