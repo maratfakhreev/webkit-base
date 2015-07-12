@@ -6,7 +6,7 @@ export default class DatesHelper {
   static convertToJSONDate(date, time) {
     if (date === '') return null;
     if (time === '') time = '00:00';
-    var currentTime = Moment(`${date} ${time}`).format();
+    let currentTime = Moment(`${date} ${time}`).format();
     return Moment.tz(currentTime, TIMEZONE).format('YYYY-MM-DDTHH:mm:ssZ');
   }
 

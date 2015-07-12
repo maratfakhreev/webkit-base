@@ -6,7 +6,7 @@ class GeoMap {
   constructor(options) {
     this.container = options.map[0];
 
-    var mapOptions = {
+    let mapOptions = {
       zoom: 15,
       center: options.centerPoint || testPoint(),
       panControl: false,
@@ -34,7 +34,7 @@ class GeoMap {
 
   fitMap() {
     if (this.markersCoordinates) {
-      var bounds = new google.maps.LatLngBounds();
+      let bounds = new google.maps.LatLngBounds();
 
       _.each(this.markersCoordinates, function(value, key) {
         bounds.extend(value);
@@ -59,7 +59,7 @@ class GeoMap {
 
     if (this.withCurrentLocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        var userCoordinates = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        let userCoordinates = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this._renderMarkersArray(this.currentMap, userCoordinates);
       }, () => {
         this._renderMarkersArray(this.currentMap, testPoint());
@@ -101,7 +101,7 @@ class GeoMap {
 
     this.markers = [];
     _.each(this.markersCoordinates, (value, key) => {
-      var icon = {};
+      let icon = {};
 
       if (this.markersImages && this.markersImages[key]) {
         icon = this.markersImages[key];
@@ -117,7 +117,7 @@ class GeoMap {
         };
       }
 
-      var googleMarker = new google.maps.Marker({
+      let googleMarker = new google.maps.Marker({
         position: value,
         map: map,
         icon: icon
@@ -142,14 +142,13 @@ class GeoAutocomplete {
   }
 
   _getPredictions(method, obj) {
-    var deferred = $.Deferred();
-
+    let deferred = $.Deferred();
     this.service[method](obj, (predictions, status) => {
       if (status !== google.maps.places.PlacesServiceStatus.OK) {
         deferred.reject();
       }
       else {
-        var predictionsCollection = [];
+        let predictionsCollection = [];
         for (let prediction of predictions) {
           predictionsCollection.push(prediction);
         }
@@ -167,8 +166,8 @@ class GeoGeocoder {
   }
 
   getStreetAddress(latLng) {
-    var deferred = $.Deferred();
-    this.service.geocode({latLng}, function(response, status) {
+    let deferred = $.Deferred();
+    this.service.geocode({ latLng }, function(response, status) {
       if (status === google.maps.DirectionsStatus.OK) {
         deferred.resolve(response);
       }
@@ -206,7 +205,7 @@ export default class GeolocationFactory {
   }
 
   static getUserPoint() {
-    var deferred = $.Deferred();
+    let deferred = $.Deferred();
     navigator.geolocation.getCurrentPosition((position) => {
       deferred.resolve(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
     }, () => {

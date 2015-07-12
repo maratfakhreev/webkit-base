@@ -24,7 +24,7 @@ export default class AppModel extends Backbone.NestedModel {
     if (Connection()) {
       if (Session.isLoggedIn()) {
         options.headers = options.headers || {};
-        _.extend(options.headers, {'Authorization': `Token token=${Session.token}`});
+        _.extend(options.headers, { 'Authorization': `Token token=${Session.token}` });
       }
     }
     else {
@@ -35,21 +35,21 @@ export default class AppModel extends Backbone.NestedModel {
   }
 
   fetch(options) {
-    var dfd = new $.Deferred();
+    let deferred = new $.Deferred();
     Spinner.show();
     super.fetch(options).done(function() {
       Spinner.hide();
-      dfd.resolve();
+      deferred.resolve();
     }).fail(function() {
       Spinner.hide();
-      dfd.reject();
+      deferred.reject();
     });
 
-    return dfd.promise();
+    return deferred.promise();
   }
 
   onErrorHandler(model, error) {
-    if (ERRORS.some(function(element) {return element === error.status;})) {
+    if (ERRORS.some(function(element) { return element === error.status; })) {
       Notifications.error(_.values(error.responseJSON)[0]);
     }
     else {
@@ -58,7 +58,7 @@ export default class AppModel extends Backbone.NestedModel {
   }
 
   onInvalidValidation(model, errors) {
-    var message = _.chain(errors).values().join('\n').value();
+    let message = _.chain(errors).values().join('\n').value();
     Notifications.error(message);
   }
 }

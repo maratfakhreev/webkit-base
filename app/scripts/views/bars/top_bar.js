@@ -23,9 +23,7 @@ export default class TopNavigationView extends Marionette.ItemView {
   }
 
   serializeData() {
-    return {
-      title: this.title
-    };
+    return { title: this.title };
   }
 
   onClickRefreshButton() {

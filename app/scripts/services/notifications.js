@@ -2,7 +2,7 @@ import Device from 'scripts/services/device';
 
 const DELAY = 300;
 
-var confirm = _.debounce(function(...params) {
+let confirm = _.debounce(function(...params) {
   if (Device.isMobileDevice()) {
     navigator.notification.confirm(...params);
   }
@@ -12,7 +12,7 @@ var confirm = _.debounce(function(...params) {
   }
 }, DELAY);
 
-var appAlert = _.debounce(function(...params) {
+let appAlert = _.debounce(function(...params) {
   if (Device.isMobileDevice()) {
     navigator.notification.alert(...params);
   }

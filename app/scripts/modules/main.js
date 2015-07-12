@@ -10,8 +10,8 @@ class Main extends Marionette.Module {
   }
 
   onBeforeStart() {
-    this.controller = new Controller();
-    this.router = new Router({controller: this.controller});
+    let controller = new Controller();
+    this.router = new Router({ controller });
   }
 }
 

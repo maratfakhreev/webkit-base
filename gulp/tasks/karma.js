@@ -16,20 +16,20 @@ gulp.task('karma', function() {
     singleRun: true,
     browsers: ['PhantomJS'],
     files: [
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/underscore/underscore.js',
-      'bower_components/backbone/backbone.js',
-      'bower_components/backbone-route-filter/backbone-route-filter.js',
-      'bower_components/backbone.stickit/backbone.stickit.js',
-      'bower_components/backbone-validation/dist/backbone-validation.js',
-      'bower_components/backbone-nested-model/backbone-nested.js',
-      'bower_components/marionette/lib/backbone.marionette.js',
-      'bower_components/moment/moment.js',
-      'bower_components/moment-timezone/builds/moment-timezone-with-data.js',
-      'bower_components/fastclick/lib/fastclick.js',
-      'bower_components/velocity/velocity.js',
-      'bower_components/velocity/velocity.ui.js',
-      'bower_components/nprogress/nprogress.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/underscore/underscore.js',
+      'node_modules/backbone/backbone.js',
+      'node_modules/backbone-route-filter/backbone-route-filter.js',
+      'node_modules/backbone.stickit/backbone.stickit.js',
+      'node_modules/backbone-validation/dist/backbone-validation.js',
+      'node_modules/backbone.marionette/lib/backbone.marionette.js',
+      'node_modules/backbone-nested/backbone-nested.js',
+      'node_modules/moment/moment.js',
+      'node_modules/moment-timezone/moment-timezone.js',
+      'node_modules/fastclick/lib/fastclick.js',
+      'node_modules/velocity-animate/velocity.js',
+      'node_modules/velocity-animate/velocity.ui.js',
+      'node_modules/nprogress/nprogress.js',
       'vendor/**/*.js',
       'specs/**/*_spec.js'
     ],
@@ -51,18 +51,12 @@ gulp.task('karma', function() {
       packageCache: {},
       fullPaths: true,
       debug: true,
-      paths: ["./" + config.appDir],
+      paths: ['./' + config.appDir],
       transform: [
         'browserify-shim'
       ],
       prebundle: function(bundle) {
-        bundle.transform(babelify.configure({
-          ignore: [
-            'bower_components',
-            'vendor/scripts'
-          ],
-          sourceMapRelative: "./" + config.appDir
-        }));
+        bundle.transform(babelify.configure({ sourceMapRelative: './' + config.appDir }));
       }
     },
     client: {

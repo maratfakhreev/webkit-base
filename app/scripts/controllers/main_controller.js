@@ -12,7 +12,7 @@ import MapView from 'scripts/views/map/map_view';
 import PostsListView from 'scripts/views/posts/posts_list_view';
 
 function renderScreen() {
-  this.layout.topBarRegion.show(new TopBarView({title: 'Check-in'}));
+  this.layout.topBarRegion.show(new TopBarView({ title: 'Check-in' }));
   this.layout.sideNavigationRegion.show(new SideNavigationLayout());
   this.layout.contentRegion.show(new MapView());
 }
@@ -51,8 +51,8 @@ export default class MainController extends Marionette.Controller {
   }
 
   posts() {
-    this.layout.topBarRegion.show(new TopBarView({title: 'Check-ins'}));
-    this.layout.contentRegion.show(new PostsListView({collection: this.posts}));
+    this.layout.topBarRegion.show(new TopBarView({ title: 'Check-ins' }));
+    this.layout.contentRegion.show(new PostsListView({ collection: this.posts }));
   }
 
   onAddItem(model) {

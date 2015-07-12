@@ -8,11 +8,11 @@ gulp.task('replace', function() {
   var patterns = [];
   var env = config.env;
 
-  if (!fs.existsSync(config.appDir + "/config/environments/" + env + ".json")) {
+  if (!fs.existsSync(config.appDir + '/config/environments/' + env + '.json')) {
     env = 'development';
   };
 
-  settings = JSON.parse(fs.readFileSync(config.appDir + "/config/environments/" + env + ".json", 'utf8'));
+  settings = JSON.parse(fs.readFileSync(config.appDir + '/config/environments/' + env + '.json', 'utf8'));
   settings['env'] = env;
 
   for (var settingName in settings) {
@@ -22,7 +22,7 @@ gulp.task('replace', function() {
     });
   };
 
-  gulp.src(config.appDir + "/config/config.js")
-    .pipe(replace({patterns: patterns}))
-    .pipe(gulp.dest(config.appDir + "/scripts"));
+  gulp.src(config.appDir + '/config/config.js')
+    .pipe(replace({ patterns: patterns }))
+    .pipe(gulp.dest(config.appDir + '/scripts'));
 });

@@ -1,5 +1,5 @@
-var channels = {};
-var instance = null;
+let channels = {};
+let instance = null;
 
 // base EventAggregator pattern
 class CustomEventAggregator {

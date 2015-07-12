@@ -3,7 +3,7 @@ import Notifications from 'scripts/services/notifications';
 import Device from 'scripts/services/device';
 import Messages from 'scripts/helpers/messages';
 
-var App = new Marionette.Application();
+let App = new Marionette.Application();
 
 App.alreadyInitialized = false;
 
@@ -19,8 +19,8 @@ App.on('start', function() {
 
     $(document).on('click', '.js-link', function(event) {
       event.preventDefault();
-      var href = $(event.currentTarget).attr('href');
-      App.navigate(href, {trigger: true});
+      let href = $(event.currentTarget).attr('href');
+      App.navigate(href, { trigger: true });
     });
   }
   else {

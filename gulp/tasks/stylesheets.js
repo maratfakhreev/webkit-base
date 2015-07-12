@@ -8,12 +8,12 @@ var notify = require('gulp-notify');
 var config = require('../config');
 
 gulp.task('stylesheets', function() {
-  gulp.src(config.appDir + "/stylesheets/application.styl")
+  gulp.src(config.appDir + '/stylesheets/application.styl')
     .pipe(plumber())
     .pipe(stylus({
       linenos: config.isDevelopment(),
       use: [
-        autoprefixer({browsers: 'last 2 versions'}),
+        autoprefixer({ browsers: 'last 2 versions' }),
         jeet()
       ]
     }).on('error', notify.onError()))

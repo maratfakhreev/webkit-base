@@ -5,7 +5,6 @@ var config = require('../config');
 gulp.task('development', function() {
   config.env = 'development';
   runSequence(
-    'install',
     'clean',
     [
       'copy',

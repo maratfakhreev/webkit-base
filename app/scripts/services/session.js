@@ -5,7 +5,7 @@ import Storage from 'scripts/services/storage';
 
 const SESSION_KEY = AppConfig.sessionKey;
 const STORAGE_KEY = AppConfig.storageKey;
-var currentUser = null;
+let currentUser = null;
 
 class Session {
   static currentUser() {
@@ -13,7 +13,7 @@ class Session {
   }
 
   static create() {
-    var deferred = $.Deferred();
+    let deferred = $.Deferred();
 
     if (!this.isLoggedIn()) {
       this.currentUser().save(null, {
