@@ -1,9 +1,29 @@
 #Webkit Base
 
-Instrumental environment for developing cross-platform applications base on Apache Cordova platform and includes Backbone.js/Marionette.js frameworks and gulp/bower technologies.
+Instrumental environment for developing cross-platform applications base on Apache Cordova platform and includes Backbone.js/Marionette.js frameworks and node/gulp technologies.
 
-## NPM Modules:
+## NPM Dependencies
     "autoprefixer-stylus"
+    "backbone"
+    "backbone-nested"
+    "backbone-validation"
+    "backbone.marionette"
+    "backbone.routefilter"filter",
+    "backbone.stickit"
+    "cordova-android"
+    "cordova-browser"
+    "cordova-ios"
+    "fastclick"
+    "font-awesome"
+    "jeet"
+    "jquery"
+    "moment"
+    "moment-timezone"
+    "nprogress"
+    "topcoat"
+    "underscore"
+
+## NPM Dev dependencies:
     "babelify"
     "browser-sync"
     "browserify"
@@ -16,7 +36,6 @@ Instrumental environment for developing cross-platform applications base on Apac
     "gulp-concat"
     "gulp-cssimport"
     "gulp-help"
-    "gulp-install"
     "gulp-jade"
     "gulp-jshint"
     "gulp-jsonlint"
@@ -26,7 +45,6 @@ Instrumental environment for developing cross-platform applications base on Apac
     "gulp-replace-task"
     "gulp-stylus"
     "jadeify"
-    "jeet"
     "jshint-stylish"
     "karma"
     "karma-browserify"
@@ -42,21 +60,6 @@ Instrumental environment for developing cross-platform applications base on Apac
     "vinyl-transform"
     "watchify"
     "yargs"
-
-## Bower components:
-    "jquery"
-    "marionette"
-    "backbone-route-filter"
-    "backbone.stickit"
-    "backbone-validation"
-    "moment"
-    "moment-timezone"
-    "fastclick"
-    "fontawesome"
-    "backbone-nested-model"
-    "velocity"
-    "nprogress"
-    "topcoat"
 
 ## Install
 ### OSX

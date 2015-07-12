@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var rename = require('gulp-rename');
 var browserify = require('browserify');
 var transform = require('vinyl-transform');
-var browserifyShim = require('browserify-shim');
 var jadeify = require('jadeify');
 var babelify = require('babelify');
 var watchify = require('watchify');
@@ -21,15 +20,8 @@ gulp.task('browserify', function() {
     entries: entryPoint,
     paths: ["./" + config.appDir]
   })
-  .transform(browserifyShim)
   .transform(jadeify)
-  .transform(babelify.configure({
-    ignore: [
-      'bower_components',
-      'vendor/scripts'
-    ],
-    sourceMapRelative: "./" + config.appDir
-  }));
+  .transform(babelify.configure({sourceMapRelative: "./" + config.appDir}));
 
   function bundle() {
     var bundleTransform = transform(function(filename) {
