@@ -35,7 +35,7 @@ export default class SideNavigationLayout extends Marionette.LayoutView {
 
   onLogout() {
     Vent.trigger('navigation:hide');
-    setTimeout(() => {Session.destroy();}, 200);
+    setTimeout(() => { Session.destroy(); }, 200);
   }
 
   onChangePage() {

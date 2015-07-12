@@ -14,7 +14,7 @@ var platform_dirs = [];
 /* Platforms builder */
 
 for (p in cordovaLib.cordova_platforms) {
-  var pname = "cordova-" + p;
+  var pname = 'cordova-' + p;
 
   if (pkg.dependencies[pname]) {
     platforms.push(p);
@@ -123,7 +123,7 @@ gulp.task('run', 'Prepare, compile and emulate application for current platform'
 
 gulp.task('release', 'Release application', function() {
   changeProcessDir(process);
-  return cdv.build({options: ['--release']});
+  return cdv.build({ options: ['--release'] });
 }, {
   options: {
     'release': 'use release environment'
@@ -151,7 +151,7 @@ gulp.task('add-platform', function() {
   return cdv.platform('add', argv.platform);
 }, {
   options: {
-    'platfrom <platform>': 'add specified platform'
+    'platform <platform>': 'add specified platform'
   }
 });
 
@@ -160,7 +160,7 @@ gulp.task('rm-platform', function() {
   return cdv.platform('rm', argv.platform);
 }, {
   options: {
-    'platfrom <platform>': 'remove specified platform'
+    'platform <platform>': 'remove specified platform'
   }
 });
 

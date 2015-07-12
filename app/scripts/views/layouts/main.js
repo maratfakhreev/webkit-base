@@ -24,7 +24,7 @@ export default class MainLayout extends Marionette.LayoutView {
           showAnimation: [
             {
               p: 'transition.slideLeftBigIn',
-              o: {stagger: 300}
+              o: { stagger: 300 }
             }
           ]
         }

@@ -27,11 +27,13 @@
     "font-awesome": "git://github.com/FortAwesome/Font-Awesome.git",
     "jeet": "^6.1.2",
     "jquery": "^2.1.4",
+    "jquery-mobile": "^1.4.1",
     "moment": "^2.10.3",
     "moment-timezone": "^0.4.0",
     "nprogress": "^0.2.0",
     "topcoat": "git://github.com/topcoat/topcoat.git",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "velocity-animate": "^1.2.2"
   },
   "devDependencies": {
     "babelify": "^5.0.3",
@@ -66,7 +68,6 @@
     "require-dir": "~0.1.0",
     "run-sequence": "~1.0.1",
     "shelljs": "^0.3.0",
-    "underscore": "^1.8.3",
     "vinyl-transform": "^1.0.0",
     "watchify": "^2.2.1",
     "yargs": "^2.3.0"
@@ -86,20 +87,20 @@
   ],
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js",
+    "jquery-mobile": "./node_modules/jquery-mobile/dist/jquery.mobile.js",
     "underscore": "./node_modules/underscore/underscore.js",
     "backbone": "./node_modules/backbone/backbone.js",
     "backbone-routefilter": "./node_modules/backbone-route-filter/backbone-route-filter.js",
     "backbone-stickit": "./node_modules/backbone.stickit/backbone.stickit.js",
     "backbone-validation": "./node_modules/backbone-validation/dist/backbone-validation.js",
-    "marionette": "./node_modules/backbone.marionette/lib/backbone.marionette.js",
     "backbone-nested-model": "./node_modules/backbone-nested/backbone-nested.js",
+    "marionette": "./node_modules/backbone.marionette/lib/backbone.marionette.js",
     "moment": "./node_modules/moment/moment.js",
     "moment-timezone": "./node_modules/moment-timezone/moment-timezone.js",
     "fastclick": "./node_modules/fastclick/lib/fastclick.js",
     "velocity": "./node_modules/velocity-animate/velocity.js",
     "velocity-ui": "./node_modules/velocity-animate/velocity.ui.js",
-    "nprogress": "./node_modules/nprogress/nprogress.js",
-    "jquery-mobile": "./vendor/scripts/jquery.mobile.custom.js"
+    "nprogress": "./node_modules/nprogress/nprogress.js"
   },
   "browserify-shim": {
     "jquery": "$",
@@ -131,6 +132,7 @@
     "backbone-nested-model": {
       "exports": "Backbone",
       "depends": [
+        "jquery",
         "backbone"
       ]
     },

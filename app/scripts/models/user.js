@@ -27,7 +27,7 @@ export default class User extends Backbone.NestedModel {
   }
 
   onInvalidValidation(model, errors) {
-    var message = _.chain(errors).values().join('\n').value();
+    let message = _.chain(errors).values().join('\n').value();
     Notifications.error(message);
   }
 }

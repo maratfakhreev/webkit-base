@@ -7,7 +7,7 @@ class AnimatedRegion extends Marionette.Region {
 
   attachHtml(view) {
     this.$el
-      .css({display: 'none'})
+      .css({ display: 'none' })
       .html(view.el)
       .velocity('stop');
 
@@ -17,12 +17,12 @@ class AnimatedRegion extends Marionette.Region {
       });
     }
     else {
-      this.$el.css({display: 'block'});
+      this.$el.css({ display: 'block' });
     }
   }
 
   empty() {
-    var view = this.currentView;
+    let view = this.currentView;
     if (!view) return;
     this.$el.velocity('stop');
 
@@ -39,8 +39,8 @@ class AnimatedRegion extends Marionette.Region {
   }
 
   _iterateOverAnimations(animations, callback) {
-    var iterator = 0;
-    var length = animations.length;
+    let iterator = 0;
+    let length = animations.length;
 
     _.each(animations, (value, key) => {
       $.Velocity.animate(this.$el, value.p, value.o).then(() => {

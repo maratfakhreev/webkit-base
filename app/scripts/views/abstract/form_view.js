@@ -15,7 +15,7 @@ export default class AbstractFormView extends Marionette.ItemView {
   }
 
   bindValidation() {
-    Backbone.Validation.bind(this, {forceUpdate: true});
+    Backbone.Validation.bind(this, { forceUpdate: true });
   }
 
   unbindValidation() {

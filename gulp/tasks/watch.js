@@ -4,14 +4,14 @@ var config = require('../config');
 var cordovaPrepare = require('../helpers/cdv');
 
 gulp.task('watch', function() {
-  gulp.watch(config.appDir + "/stylesheets/**/*.styl", function() {
+  gulp.watch(config.appDir + '/stylesheets/**/*.styl', function() {
     runSequence(
       'stylesheets',
       cordovaPrepare
     );
   });
 
-  gulp.watch(config.appDir + "/*.jade", function() {
+  gulp.watch(config.appDir + '/*.jade', function() {
     runSequence(
       'templates',
       cordovaPrepare
@@ -19,8 +19,8 @@ gulp.task('watch', function() {
   });
 
   gulp.watch([
-    config.appDir + "/images/**/*",
-    config.appDir + "/fonts/**/*"
+    config.appDir + '/images/**/*',
+    config.appDir + '/fonts/**/*'
   ], function() {
     runSequence(
       'copy',

@@ -1,7 +1,7 @@
 export default function() {
   if ('ontouchstart' in window && navigator.connection) {
-    var states = {};
-    var networkState = navigator.connection.type;
+    let states = {};
+    let networkState = navigator.connection.type;
 
     states[Connection.UNKNOWN] = 'Unknown connection';
     states[Connection.ETHERNET] = 'Ethernet connection';

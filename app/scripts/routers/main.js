@@ -30,7 +30,7 @@ export default class MainRouter extends Marionette.AppRouter {
       Backbone.history.loadUrl(Backbone.history.fragment);
     }
     else {
-      this.navigate(RoutesHelper.rootPath(), {trigger: true});
+      this.navigate(RoutesHelper.rootPath(), { trigger: true });
     }
   }
 

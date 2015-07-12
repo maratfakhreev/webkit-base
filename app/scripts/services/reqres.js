@@ -1,4 +1,4 @@
-var instance = null;
+let instance = null;
 
 class ReqRes {
   static instance() {

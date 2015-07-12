@@ -7,7 +7,7 @@ export default class Storage {
   }
 
   static get(key) {
-    var data = storage.getItem(key);
+    let data = storage.getItem(key);
     return JSON.parse(data);
   }
 

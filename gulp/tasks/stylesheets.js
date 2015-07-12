@@ -13,7 +13,7 @@ gulp.task('stylesheets', function() {
     .pipe(stylus({
       linenos: config.isDevelopment(),
       use: [
-        autoprefixer({browsers: 'last 2 versions'}),
+        autoprefixer({ browsers: 'last 2 versions' }),
         jeet()
       ]
     }).on('error', notify.onError()))

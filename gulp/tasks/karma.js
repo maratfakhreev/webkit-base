@@ -51,12 +51,12 @@ gulp.task('karma', function() {
       packageCache: {},
       fullPaths: true,
       debug: true,
-      paths: ["./" + config.appDir],
+      paths: ['./' + config.appDir],
       transform: [
         'browserify-shim'
       ],
       prebundle: function(bundle) {
-        bundle.transform(babelify.configure({sourceMapRelative: "./" + config.appDir}));
+        bundle.transform(babelify.configure({ sourceMapRelative: './' + config.appDir }));
       }
     },
     client: {

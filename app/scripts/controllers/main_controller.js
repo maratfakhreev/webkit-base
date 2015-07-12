@@ -10,7 +10,7 @@ import LoginView from 'scripts/views/login/login_view';
 import PageView from 'scripts/views/pages/page';
 
 function renderScreen() {
-  this.layout.topBarRegion.show(new TopBarView({title: 'Webkit Base'}));
+  this.layout.topBarRegion.show(new TopBarView({ title: 'Webkit Base' }));
   this.layout.sideNavigationRegion.show(new SideNavigationLayout());
   this.layout.contentRegion.show(new LandingLayout());
 }
@@ -43,7 +43,7 @@ export default class MainController extends Marionette.Controller {
   }
 
   route() {
-    this.layout.topBarRegion.show(new TopBarView({title: 'Page'}));
+    this.layout.topBarRegion.show(new TopBarView({ title: 'Page' }));
     this.layout.contentRegion.show(new PageView());
   }
 }
